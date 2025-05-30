@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Articles - Ibraheem's Cybersecurity Blog</title>
+    <link rel="stylesheet" href="../../styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <i class="fas fa-terminal"></i>
+        <span>ibraheemA05@cybersec:~$</span>
+      </div>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav" id="nav">
+        <a href="../../index.html" class="nav-link">Home</a>
+        <a href="../tryhackme/index.html" class="nav-link">TryHackMe</a>
+        <a href="index.html" class="nav-link active">Articles</a>
+        <a href="../projects/index.html" class="nav-link">Projects</a>
+        <a href="mailto:ademiloyealhanifibraheem@gmail.com" class="nav-link"
+          >Contact</a
+        >
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <section class="hero-section articles-hero">
+        <div class="container">
+          <div class="hero-content">
+            <h1 class="hero-title">
+              <i class="fas fa-newspaper"></i>
+              Cybersecurity Articles
+            </h1>
+            <p class="hero-subtitle">
+              Sharing knowledge, insights, and experiences in cybersecurity
+              through detailed articles and tutorials.
+            </p>
+          </div>
+
+          <div class="terminal-simulation">
+            <div class="terminal-header">
+              <div class="terminal-buttons">
+                <span class="btn close"></span>
+                <span class="btn minimize"></span>
+                <span class="btn maximize"></span>
+              </div>
+              <div class="terminal-title">articles.sh</div>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line">
+                <span class="prompt">ibraheemA05@security:~/articles$</span>
+                <span class="command" id="article-command"></span>
+              </div>
+              <div class="terminal-output" id="article-output"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Coming Soon</h2>
+            <p>
+              I'm currently working on several cybersecurity articles covering
+              various topics from beginner to advanced levels.
+            </p>
+          </div>
+
+          <div class="articles-grid">
+            <!-- Published Article: AWS Cloud Security Audit -->
+            <div class="article-card published">
+              <div class="article-header">
+                <div class="article-category">Cloud Security</div>
+                <div class="article-status" data-status="published">
+                  Published
+                </div>
+              </div>
+              <h3>
+                Discover AWS Organization ID via S3 Bucket using Conditional
+                Logic
+              </h3>
+              <p>
+                A hands-on demonstration of exploiting IAM policy condition
+                misconfigurations (aws:ResourceOrgID) to discover AWS
+                Organization IDs through conditional brute-force techniques on
+                vulnerable S3 buckets.
+              </p>
+              <div class="article-meta">
+                <span class="article-date">Published: April 12, 2025</span>
+                <span class="article-time">15 min read</span>
+              </div>
+              <div class="article-topics">
+                <span class="topic">IAM Policy Exploitation</span>
+                <span class="topic">AWS Security</span>
+                <span class="topic">S3 Security</span>
+                <span class="topic">Organization ID Enumeration</span>
+              </div>
+              <div class="article-actions">
+                <a href="aws-security-audit.html" class="btn btn-primary">
+                  <i class="fas fa-book-open"></i>
+                  Read Article
+                </a>
+              </div>
+            </div>
+
+            <div class="article-card coming-soon">
+              <div class="article-header">
+                <div class="article-category">Security Fundamentals</div>
+                <div class="article-status" data-status="in-progress">
+                  In Progress
+                </div>
+              </div>
+              <h3>Introduction to Network Security on Cloud {Azure}</h3>
+              <p>
+                A comprehensive guide covering the basics of network security,
+                common threats, and defensive strategies for beginners.
+              </p>
+              <div class="article-meta">
+                <span class="article-date">Expected: Till futher notice</span>
+                <span class="article-time">???</span>
+              </div>
+              <div class="article-topics">
+                <span class="topic">Firewalls</span>
+                <span class="topic">IDS/IPS</span>
+                <span class="topic">VPN</span>
+              </div>
+            </div>
+
+            <div class="article-card coming-soon">
+              <div class="article-header">
+                <div class="article-category">Web Security</div>
+                <div class="article-status" data-status="planned">Planned</div>
+              </div>
+              <h3>Understanding OWASP Top 10</h3>
+              <p>
+                Deep dive into the OWASP Top 10 web application security risks
+                with practical examples and mitigation strategies.
+              </p>
+              <div class="article-meta">
+                <span class="article-date">Expected: Till futher notice</span>
+                <span class="article-time">???</span>
+              </div>
+              <div class="article-topics">
+                <span class="topic">SQL Injection</span>
+                <span class="topic">XSS</span>
+                <span class="topic">CSRF</span>
+              </div>
+            </div>
+
+            <div class="article-card coming-soon">
+              <div class="article-header">
+                <div class="article-category">Cloud Security</div>
+                <div class="article-status" data-status="planned">Planned</div>
+              </div>
+              <h3>AWS Security Best Practices</h3>
+              <p>
+                Essential security practices for AWS cloud environments,
+                including IAM, S3, and network security configurations.
+              </p>
+              <div class="article-meta">
+                <span class="article-date">Expected: Till futher notice</span>
+                <span class="article-time">???</span>
+              </div>
+              <div class="article-topics">
+                <span class="topic">IAM</span>
+                <span class="topic">S3 Security</span>
+                <span class="topic">CloudTrail</span>
+              </div>
+            </div>
+
+            <div class="article-card coming-soon">
+              <div class="article-header">
+                <div class="article-category">Penetration Testing</div>
+                <div class="article-status" data-status="research">
+                  Research
+                </div>
+              </div>
+              <h3>Building a Home Penetration Testing Lab</h3>
+              <p>
+                Step-by-step guide to setting up a comprehensive penetration
+                testing lab using VirtualBox and various Linux distributions.
+              </p>
+              <div class="article-meta">
+                <span class="article-date">Expected: Till futher notice</span>
+                <span class="article-time">???</span>
+              </div>
+              <div class="article-topics">
+                <span class="topic">VirtualBox</span>
+                <span class="topic">Kali Linux</span>
+                <span class="topic">Metasploitable</span>
+              </div>
+            </div>
+
+            <div class="article-card coming-soon">
+              <div class="article-header">
+                <div class="article-category">Career Development</div>
+                <div class="article-status" data-status="draft">Draft</div>
+              </div>
+              <h3>Breaking into Cybersecurity at 18</h3>
+              <p>
+                My personal journey and advice for young professionals looking
+                to start their cybersecurity career.
+              </p>
+              <div class="article-meta">
+                <span class="article-date">Expected: Till futher notice</span>
+                <span class="article-time">???</span>
+              </div>
+              <div class="article-topics">
+                <span class="topic">Career Tips</span>
+                <span class="topic">Certifications</span>
+                <span class="topic">Networking</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="progress-section">
+            <h3>Writing Progress</h3>
+            <div class="progress-grid">
+              <div class="progress-item">
+                <div class="progress-header">
+                  <span>Introduction to Network Security</span>
+                  <span>75%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 75%"></div>
+                </div>
+              </div>
+              <div class="progress-item">
+                <div class="progress-header">
+                  <span>Breaking into Cybersecurity at 19</span>
+                  <span>60%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 60%"></div>
+                </div>
+              </div>
+              <div class="progress-item">
+                <div class="progress-header">
+                  <span>Understanding OWASP Top 10</span>
+                  <span>25%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 25%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-info">
+            <p>&copy; 2024 Ibraheem. Aspiring Cybersecurity Professional.</p>
+            <p>Built with passion for security and technology.</p>
+          </div>
+          <div class="social-links">
+            <a
+              href="https://github.com/IbraheemA50"
+              target="_blank"
+              aria-label="GitHub"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+            <a
+              href="https://twitter.com/IbraheemA50"
+              target="_blank"
+              aria-label="Twitter"
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a
+              href="https://linkedin.com/in/ibraheem"
+              target="_blank"
+              aria-label="LinkedIn"
+            >
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a
+              href="mailto:ademiloyealhanifibraheem@gmail.com"
+              aria-label="Email"
+            >
+              <i class="fas fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+    <style>
+      /* Additional styles for published articles */
+      .article-card.published {
+        border: 2px solid var(--primary-color);
+        background: linear-gradient(
+          135deg,
+          rgba(0, 255, 136, 0.05) 0%,
+          rgba(0, 255, 136, 0.02) 100%
+        );
+      }
+
+      .article-card.published .article-status {
+        background: var(--primary-color);
+        color: var(--background-dark);
+        font-weight: 600;
+      }
+
+      .article-actions {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(0, 255, 136, 0.2);
+      }
+
+      .article-actions .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background: var(--primary-color);
+        color: var(--background-dark);
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .article-actions .btn:hover {
+        background: #00e07a;
+        transform: translateY(-2px);
+      }
+    </style>
+    <script>
+      // Articles page specific animations
+      document.addEventListener("DOMContentLoaded", function () {
+        // Terminal animation for articles page
+        const commands = [
+          'find ./articles -name "*.md" | head -5',
+          "cat network-security-intro.md | head -10",
+          'grep -r "OWASP" ./drafts/',
+          "ls -la published/ drafts/ research/",
+          'git log --oneline --grep="article"',
+        ];
+
+        const outputs = [
+          "./articles/network-security-intro.md\n./articles/career-advice.md\n./drafts/owasp-top10.md\n./drafts/aws-security.md\n./research/forensics-guide.md",
+          "# Introduction to Network Security\n\nNetwork security is a fundamental aspect...\nIn this comprehensive guide, we'll explore...\n\n## Common Network Threats\n\n1. Man-in-the-Middle Attacks\n2. DDoS Attacks\n3. Packet Sniffing...",
+          "./drafts/owasp-top10.md:15:The OWASP Top 10 is a standard...\n./drafts/owasp-top10.md:42:OWASP provides comprehensive...\n./research/web-security.md:8:According to OWASP statistics...",
+          "drwxr-xr-x  2 ibraheem users  4096 Dec 15 10:30 published/\ndrwxr-xr-x  2 ibraheem users  4096 Dec 15 12:45 drafts/\ndrwxr-xr-x  2 ibraheem users  4096 Dec 15 09:15 research/",
+          "a1b2c3d Add network security fundamentals\nf4e5d6c Update OWASP research notes\n8g7h9i0 Draft career advice article",
+        ];
+
+        animateTerminal("article-command", "article-output", commands, outputs);
+
+        // Animate progress bars
+        setTimeout(() => {
+          document.querySelectorAll(".progress-fill").forEach((bar) => {
+            const width = bar.style.width;
+            bar.style.width = "0%";
+            setTimeout(() => {
+              bar.style.width = width;
+            }, 100);
+          });
+        }, 1000);
+
+        // Add hover effects to article cards
+        document.querySelectorAll(".article-card").forEach((card) => {
+          card.addEventListener("mouseenter", function () {
+            this.style.transform = "translateY(-5px)";
+          });
+
+          card.addEventListener("mouseleave", function () {
+            this.style.transform = "translateY(0)";
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

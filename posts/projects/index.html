@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects - Ibraheem's Portfolio</title>
+    <link rel="stylesheet" href="../../styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="logo">
+          <i class="fas fa-terminal"></i>
+          <span>ibraheemA05@cybersec:~$</span>
+        </div>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="nav" id="nav">
+          <a href="../../index.html" class="nav-link">Home</a>
+          <a href="../tryhackme/index.html" class="nav-link">TryHackMe</a>
+          <a href="../articles/index.html" class="nav-link">Articles</a>
+          <a href="index.html" class="nav-link active">Projects</a>
+          <a href="../../index.html#contact" class="nav-link">Contact</a>
+        </nav>
+      </header>
+
+      <main class="main">
+        <section class="page-header">
+          <div class="page-header-content">
+            <h1 class="page-title">
+              <i class="fas fa-code"></i>
+              Projects
+            </h1>
+            <p class="page-description">
+              Hands-on cybersecurity and cloud engineering projects with
+              detailed documentation and real-world applications.
+            </p>
+          </div>
+        </section>
+
+        <section class="projects-section">
+          <div class="projects-container">
+            <!-- Multi-Service Docker Application -->
+            <div class="project-card featured">
+              <div class="project-header">
+                <div class="project-icon">
+                  <i class="fab fa-docker"></i>
+                </div>
+                <div class="project-meta">
+                  <h3 class="project-title">
+                    Multi-Service Docker Application
+                  </h3>
+                  <div class="project-tags">
+                    <span class="tag">Docker</span>
+                    <span class="tag">Microservices</span>
+                    <span class="tag">DevOps</span>
+                    <span class="tag">Container Security</span>
+                  </div>
+                </div>
+                <div class="project-status">
+                  <span class="status-badge completed">Completed</span>
+                </div>
+              </div>
+
+              <div class="project-content">
+                <p class="project-description">
+                  A comprehensive multi-service application built with Docker,
+                  demonstrating container orchestration, service communication,
+                  and security best practices. This project showcases practical
+                  implementation of microservices architecture with proper
+                  logging, monitoring, and security configurations.
+                </p>
+
+                <div class="project-highlights">
+                  <h4>Key Features:</h4>
+                  <ul>
+                    <li>Multi-container Docker Compose setup</li>
+                    <li>Service mesh communication</li>
+                    <li>Container security hardening</li>
+                    <li>Automated testing and deployment</li>
+                    <li>Performance monitoring and logging</li>
+                  </ul>
+                </div>
+
+                <div class="project-tech">
+                  <strong>Technologies:</strong> Docker, Docker Compose,
+                  Node.js, Redis, MongoDB, Nginx
+                </div>
+              </div>
+
+              <div class="project-actions">
+                <a
+                  href="https://github.com/IbraheemA05/Multi-Service-Docker-Application"
+                  target="_blank"
+                  class="btn btn-primary"
+                >
+                  <i class="fab fa-github"></i>
+                  View on GitHub
+                </a>
+                <a href="multi-service-writeup.html" class="btn btn-secondary">
+                  <i class="fas fa-book"></i>
+                  Read Writeup
+                </a>
+              </div>
+            </div>
+
+            <!-- Server Performance Stats -->
+            <div class="project-card">
+              <div class="project-header">
+                <div class="project-icon">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="project-meta">
+                  <h3 class="project-title">Server Performance Stats</h3>
+                  <div class="project-tags">
+                    <span class="tag">Monitoring</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">System Administration</span>
+                    <span class="tag">Performance</span>
+                  </div>
+                </div>
+                <div class="project-status">
+                  <span class="status-badge completed">Completed</span>
+                </div>
+              </div>
+
+              <div class="project-content">
+                <p class="project-description">
+                  A comprehensive server monitoring solution that tracks system
+                  performance metrics, generates detailed reports, and provides
+                  real-time insights into server health and resource
+                  utilization.
+                </p>
+
+                <div class="project-highlights">
+                  <h4>Features:</h4>
+                  <ul>
+                    <li>Real-time CPU, memory, and disk monitoring</li>
+                    <li>Network traffic analysis</li>
+                    <li>Process monitoring and alerting</li>
+                    <li>Historical data visualization</li>
+                    <li>Automated report generation</li>
+                  </ul>
+                </div>
+
+                <div class="project-tech">
+                  <strong>Technologies:</strong> Python, psutil, matplotlib,
+                  SQLite, Flask, JavaScript
+                </div>
+              </div>
+
+              <div class="project-actions">
+                <a
+                  href="https://github.com/IbraheemA05/Server-Performance-Stats"
+                  target="_blank"
+                  class="btn btn-primary"
+                >
+                  <i class="fab fa-github"></i>
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+
+            <!-- Bash Automation Tools -->
+            <div class="project-card">
+              <div class="project-header">
+                <div class="project-icon">
+                  <i class="fas fa-terminal"></i>
+                </div>
+                <div class="project-meta">
+                  <h3 class="project-title">Automation with Bash</h3>
+                  <div class="project-tags">
+                    <span class="tag">Bash</span>
+                    <span class="tag">Automation</span>
+                    <span class="tag">Linux</span>
+                    <span class="tag">DevOps</span>
+                  </div>
+                </div>
+                <div class="project-status">
+                  <span class="status-badge completed">Completed</span>
+                </div>
+              </div>
+
+              <div class="project-content">
+                <p class="project-description">
+                  Collection of powerful Bash scripts designed to automate
+                  common system administration tasks, security assessments, and
+                  development workflows. These tools enhance productivity and
+                  ensure consistent execution of routine operations.
+                </p>
+
+                <div class="project-highlights">
+                  <h4>Script Categories:</h4>
+                  <ul>
+                    <li>System maintenance and cleanup</li>
+                    <li>Log analysis and monitoring</li>
+                    <li>Backup and restore operations</li>
+                    <li>Security scanning automation</li>
+                    <li>Development environment setup</li>
+                  </ul>
+                </div>
+
+                <div class="project-tech">
+                  <strong>Technologies:</strong> Bash, Linux utilities, cron,
+                  systemd, awk, sed, grep
+                </div>
+              </div>
+
+              <div class="project-actions">
+                <a
+                  href="https://github.com/IbraheemA05/bash-automation-tools"
+                  target="_blank"
+                  class="btn btn-primary"
+                >
+                  <i class="fab fa-github"></i>
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="skills-section">
+          <h2 class="section-title">
+            <i class="fas fa-tools"></i>
+            Technical Skills
+          </h2>
+
+          <div class="skills-grid">
+            <div class="skill-category">
+              <h3>Security Domains</h3>
+              <div class="skills-list">
+                <span class="skill">Penetration Testing</span>
+                <span class="skill">Cloud Penetration Testing</span>
+                <span class="skill">Cloud Engineer</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h3>Networking Security on Cloud</h3>
+              <div class="skills-list">
+                <span class="skill"
+                  >Network Security Architecture {Azure VNETs, NSGs}</span
+                >
+                <span class="skill">Firewall Configuration</span>
+                <span class="skill">IDS/IPS Management</span>
+                <span class="skill">VPN Technologies</span>
+                <span class="skill">Zero Trust Architecture</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h3>Cloud Security</h3>
+              <div class="skills-list">
+                <span class="skill">Amazon Web Services (AWS)</span>
+                <span class="skill">Microsoft Azure</span>
+                <span class="skill">Azure Security Center</span>
+                <span class="skill">Azure Sentinel</span>
+                <span class="skill">IAM Management</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h3>Serverless & Container Security</h3>
+              <div class="skills-list">
+                <span class="skill">Docker</span>
+                <span class="skill">DevSecOps Integration</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h3>Programming & Scripting</h3>
+              <div class="skills-list">
+                <span class="skill">Python</span>
+                <span class="skill">Bash Scripting</span>
+                <span class="skill">Node.js</span>
+                <span class="skill">Automation Development with Bash</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h3>Cybersecurity Tools</h3>
+              <div class="skills-list">
+                <span class="skill">Nmap</span>
+                <span class="skill">Burp Suite</span>
+                <span class="skill">Metasploit</span>
+                <span class="skill">Wireshark</span>
+                <span class="skill">Nessus</span>
+                <span class="skill">OWASP ZAP</span>
+                <span class="skill">E.T.C</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h3>Collaboration & Management</h3>
+              <div class="skills-list">
+                <span class="skill">Git & GitHub</span>
+                <span class="skill">Infrastructure as Code</span>
+                <span class="skill">Technical Documentation</span>
+                <span class="skill">Project Management</span>
+                <span class="skill">Team Leadership</span>
+                <span class="skill">Security Awareness Training</span>
+                <span class="skill">Compliance Reporting</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Get In Touch</h3>
+            <p>
+              Let's connect and discuss cybersecurity, cloud engineering, or
+              potential collaborations!
+            </p>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Projects</a></li>
+              <li><a href="../tryhackme/index.html">TryHackMe</a></li>
+              <li><a href="../articles/index.html">Articles</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Connect</h3>
+            <div class="footer-social">
+              <a href="https://x.com/IbraheemA50" target="_blank"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/ademiloye-al-hanif-ibraheem-4b5a3027a/"
+                target="_blank"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a href="mailto:ademiloyealhanifibraheem@gmail.com"
+                ><i class="fas fa-envelope"></i
+              ></a>
+              <a href="https://github.com/IbraheemA05" target="_blank"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 Ibraheem Ademiloye. All rights reserved.</p>
+          <p class="footer-motto">Defensive By Offensive!</p>
+        </div>
+      </footer>
+    </div>
+
+    <style>
+      /* Additional styles for projects page */
+      .page-header {
+        padding: 6rem 2rem 4rem;
+        background: var(--gradient-dark);
+        text-align: center;
+      }
+
+      .page-header-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .page-title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .page-description {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      .projects-section {
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .projects-container {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+      }
+
+      .project-card {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .project-card.featured {
+        border-color: var(--primary-color);
+        box-shadow: 0 5px 20px rgba(0, 255, 136, 0.1);
+      }
+
+      .project-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(0, 255, 136, 0.15);
+      }
+
+      .project-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+        padding: 2rem;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .project-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--gradient-primary);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .project-icon i {
+        font-size: 1.5rem;
+        color: var(--background-dark);
+      }
+
+      .project-meta {
+        flex: 1;
+      }
+
+      .project-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+      }
+
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .tag {
+        background: var(--background-dark);
+        color: var(--primary-color);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        border: 1px solid var(--primary-color);
+      }
+
+      .project-status {
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .status-badge {
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .status-badge.completed {
+        background: rgba(40, 202, 66, 0.2);
+        color: #28ca42;
+        border: 1px solid #28ca42;
+      }
+
+      .project-content {
+        padding: 2rem;
+      }
+
+      .project-description {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+
+      .project-highlights {
+        margin-bottom: 1.5rem;
+      }
+
+      .project-highlights h4 {
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+
+      .project-highlights ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .project-highlights li {
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+        padding-left: 1.5rem;
+        position: relative;
+      }
+
+      .project-highlights li::before {
+        content: "▸";
+        color: var(--primary-color);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+      }
+
+      .project-tech {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+
+      .project-tech strong {
+        color: var(--text-primary);
+      }
+
+      .project-actions {
+        padding: 1.5rem 2rem;
+        border-top: 1px solid var(--border-color);
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        background: var(--primary-color);
+        color: var(--background-dark);
+      }
+
+      .btn-primary:hover {
+        background: #00e07a;
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background: var(--background-dark);
+        color: var(--primary-color);
+        border: 1px solid var(--primary-color);
+      }
+
+      .btn-secondary:hover {
+        background: var(--primary-color);
+        color: var(--background-dark);
+      }
+
+      .btn.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      .skills-section {
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        background: var(--background-medium);
+        border-radius: 16px;
+        margin-top: 2rem;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+
+      .skill-category h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .skills-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .skill {
+        background: var(--background-dark);
+        color: var(--text-secondary);
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        border-left: 3px solid var(--primary-color);
+      }
+
+      @media (max-width: 768px) {
+        .page-title {
+          font-size: 2.5rem;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .project-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .project-actions {
+          flex-direction: column;
+        }
+
+        .btn {
+          text-align: center;
+          justify-content: center;
+        }
+      }
+    </style>
+
+    <script src="../../script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multi-Service Docker Application - Ibraheem's Portfolio</title>
+    <link rel="stylesheet" href="../../styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="logo">
+          <i class="fas fa-terminal"></i>
+          <span>ibraheemA05@cybersec:~$</span>
+        </div>
+        <nav class="nav">
+          <a href="../../index.html" class="nav-link">Home</a>
+          <a href="../tryhackme/index.html" class="nav-link">TryHackMe</a>
+          <a href="../articles/index.html" class="nav-link">Articles</a>
+          <a href="index.html" class="nav-link active">Projects</a>
+          <a href="../../index.html#contact" class="nav-link">Contact</a>
+        </nav>
+      </header>
+
+      <main class="main">
+        <section class="project-hero">
+          <div class="project-hero-content">
+            <div class="breadcrumb">
+              <a href="../../index.html">Home</a>
+              <span>/</span>
+              <a href="index.html">Projects</a>
+              <span>/</span>
+              <span>Multi-Service Docker Application</span>
+            </div>
+
+            <h1 class="project-hero-title">
+              <i class="fab fa-docker"></i>
+              Multi-Service Docker Application
+            </h1>
+
+            <div class="project-meta-info">
+              <div class="meta-item">
+                <i class="fas fa-calendar"></i>
+                <span>Completed: April 2025</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>Duration: 2 weeks</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-tag"></i>
+                <span>Category: DevOps & Container Security</span>
+              </div>
+            </div>
+
+            <p class="project-hero-description">
+              A production-ready, full-stack multi-service application built and
+              orchestrated with Docker Compose. This project demonstrates a
+              real-world microservices architecture, featuring a modern React
+              frontend, a robust Node.js/Express API, MongoDB for data
+              persistence, Redis for caching, and NGINX as a reverse proxy. It
+              is designed for scalability, security, and developer productivity.
+            </p>
+          </div>
+        </section>
+
+        <section class="project-content">
+          <div class="content-wrapper">
+            <div class="main-content">
+              <div class="content-section">
+                <h2>Project Overview</h2>
+                <p>
+                  A production-ready, full-stack multi-service application built
+                  and orchestrated with Docker Compose. This project
+                  demonstrates a real-world microservices architecture,
+                  featuring a modern React frontend, a robust Node.js/Express
+                  API, MongoDB for data persistence, Redis for caching, and
+                  NGINX as a reverse proxy. It is designed for scalability,
+                  security, and developer productivity.
+                </p>
+
+                <p>
+                  The application showcases essential Docker concepts including
+                  multi-container orchestration, Docker secrets management,
+                  custom Dockerfiles with multi-stage builds, persistent data
+                  storage, and development workflows with hot reload
+                  capabilities.
+                </p>
+
+                <div class="highlight-box">
+                  <h3>Architecture Highlights</h3>
+                  <ul>
+                    <li>
+                      <strong>Frontend:</strong> React (Vite) SPA with modern
+                      UI/UX
+                    </li>
+                    <li>
+                      <strong>Backend:</strong> Node.js + Express RESTful API
+                    </li>
+                    <li>
+                      <strong>Database:</strong> MongoDB with persistent storage
+                      and initialization script
+                    </li>
+                    <li>
+                      <strong>Cache:</strong> Redis for performance and session
+                      management
+                    </li>
+                    <li>
+                      <strong>Reverse Proxy:</strong> NGINX for SSL termination,
+                      routing, and static file serving
+                    </li>
+                    <li>
+                      <strong>Docker Compose:</strong> Multi-container
+                      orchestration and networking
+                    </li>
+                    <li>
+                      <strong>Docker Secrets:</strong> Secure management of
+                      sensitive data (e.g., DB passwords)
+                    </li>
+                    <li>
+                      <strong>Log Rotation:</strong> Configured for all services
+                      to prevent disk overuse
+                    </li>
+                    <li>
+                      <strong>Health Checks:</strong> For all major services to
+                      ensure reliability
+                    </li>
+                    <li>
+                      <strong>Hot Reload:</strong> Enabled for local development
+                      with Docker Compose Watch
+                    </li>
+                    <li>
+                      <strong>Custom Dockerfiles:</strong> Multi-stage builds
+                      for optimized images
+                    </li>
+                    <li>
+                      <strong>Environment Variables:</strong> Centralized config
+                      for easy deployment
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="content-section">
+                <h2>Service Architecture</h2>
+                <div class="architecture-visual">
+                  <pre class="architecture-code">
+[ NGINX ]
+    |
+    +---> [ Frontend (React) ]
+    |
+    +---> [ API (Node.js/Express) ]
+                |         |
+                |         +---> [ MongoDB ]
+                |         +---> [ Redis ]
+                  </pre>
+                  <p>
+                    All services communicate over a private Docker network
+                    (<code>app-network</code>).
+                  </p>
+                  <p>
+                    NGINX handles all incoming HTTP requests and routes them to
+                    the appropriate service.
+                  </p>
+                  <p>
+                    MongoDB and Redis use Docker volumes for persistent data.
+                  </p>
+                </div>
+
+                <div class="architecture-diagram">
+                  <div class="service-layer">
+                    <h4>Presentation Layer</h4>
+                    <div class="service-group">
+                      <div class="service-box frontend">
+                        <i class="fab fa-react"></i>
+                        <span>React Frontend</span>
+                        <small>Vite + Modern UI/UX</small>
+                      </div>
+                      <div class="service-box proxy">
+                        <i class="fas fa-server"></i>
+                        <span>NGINX Proxy</span>
+                        <small>SSL Termination & Routing</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="service-layer">
+                    <h4>Application Layer</h4>
+                    <div class="service-group">
+                      <div class="service-box api">
+                        <i class="fab fa-node-js"></i>
+                        <span>Node.js/Express API</span>
+                        <small>RESTful API</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="service-layer">
+                    <h4>Data Layer</h4>
+                    <div class="service-group">
+                      <div class="service-box database">
+                        <i class="fas fa-database"></i>
+                        <span>MongoDB</span>
+                        <small>Persistent Storage</small>
+                      </div>
+                      <div class="service-box cache">
+                        <i class="fas fa-memory"></i>
+                        <span>Redis Cache</span>
+                        <small>Session Management</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="content-section">
+                <h2>Key Features</h2>
+
+                <div class="features-grid">
+                  <div class="feature-card">
+                    <i class="fab fa-docker"></i>
+                    <h4>Containerized Services</h4>
+                    <p>
+                      Each service runs in isolated Docker containers with
+                      optimized multi-stage builds
+                    </p>
+                  </div>
+
+                  <div class="feature-card">
+                    <i class="fas fa-network-wired"></i>
+                    <h4>Service Mesh</h4>
+                    <p>
+                      Internal communication through Docker networks with
+                      service discovery
+                    </p>
+                  </div>
+
+                  <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Security Hardening</h4>
+                    <p>
+                      Non-root users, minimal base images, and secrets
+                      management
+                    </p>
+                  </div>
+
+                  <div class="feature-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h4>Health Monitoring</h4>
+                    <p>
+                      Container health checks and application monitoring with
+                      Prometheus
+                    </p>
+                  </div>
+
+                  <div class="feature-card">
+                    <i class="fas fa-balance-scale"></i>
+                    <h4>Load Balancing</h4>
+                    <p>
+                      Nginx reverse proxy with load balancing and SSL
+                      termination
+                    </p>
+                  </div>
+
+                  <div class="feature-card">
+                    <i class="fas fa-database"></i>
+                    <h4>Data Persistence</h4>
+                    <p>
+                      Persistent volumes for database storage and Redis caching
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="content-section">
+                <h2>Security Implementation</h2>
+                <p>
+                  Security was a primary consideration throughout the
+                  development process, implementing multiple layers of
+                  protection and following container security best practices.
+                </p>
+
+                <div class="security-measures">
+                  <div class="security-category">
+                    <h4>Container Security</h4>
+                    <ul>
+                      <li>
+                        Multi-stage Docker builds for minimal attack surface
+                      </li>
+                      <li>Non-root user execution in all containers</li>
+                      <li>Read-only root filesystems where possible</li>
+                      <li>Resource limits and constraints</li>
+                      <li>Security scanning with Trivy</li>
+                    </ul>
+                  </div>
+
+                  <div class="security-category">
+                    <h4>Network Security</h4>
+                    <ul>
+                      <li>
+                        Isolated Docker networks for service communication
+                      </li>
+                      <li>Nginx reverse proxy for external access</li>
+                      <li>SSL/TLS encryption for external connections</li>
+                      <li>Internal service-to-service authentication</li>
+                      <li>Firewall rules and port restrictions</li>
+                    </ul>
+                  </div>
+
+                  <div class="security-category">
+                    <h4>Secrets Management</h4>
+                    <ul>
+                      <li>Docker secrets for sensitive data</li>
+                      <li>Environment variable encryption</li>
+                      <li>Database credentials rotation</li>
+                      <li>API key management</li>
+                      <li>Vault integration for production deployment</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="content-section">
+                <h2>Technical Implementation</h2>
+
+                <div class="code-section">
+                  <h3>Docker Compose Configuration</h3>
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span>docker-compose.yml</span>
+                      <button
+                        class="copy-btn"
+                        onclick="copyCode('docker-compose')"
+                      >
+                        <i class="fas fa-copy"></i>
+                      </button>
+                    </div>
+                    <pre id="docker-compose"><code>version: '3.8'
+
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./project/dist:/usr/share/nginx/html
+    depends_on:
+      - frontend
+      - api
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./project
+      dockerfile: Dockerfile
+    volumes:
+      - ./project:/app
+      - /app/node_modules
+    networks:
+      - app-network
+    develop:
+      watch:
+        - action: sync
+          path: ./project/src
+          target: /app/src
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=development
+      - MONGO_URI=mongodb://mongodb:27017/multiservice
+      - REDIS_URL=redis://redis:6379
+    secrets:
+      - mongo_root_password
+    depends_on:
+      - mongodb
+      - redis
+    networks:
+      - app-network
+    volumes:
+      - ./api:/app
+      - /app/node_modules
+    develop:
+      watch:
+        - action: sync
+          path: ./api
+          target: /app
+
+  mongodb:
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD_FILE=/run/secrets/mongo_root_password
+    secrets:
+      - mongo_root_password
+    volumes:
+      - mongo_data:/data/db
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js
+    networks:
+      - app-network
+    ports:
+      - "27023:27017"
+
+  redis:
+    image: redis:alpine
+    volumes:
+      - redis_data:/data
+    networks:
+      - app-network
+    ports:
+      - "6379:6379"
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongo_data:
+  redis_data:
+
+secrets:
+  mongo_root_password:
+    file: ./secrets/mongo_root_password.txt</code></pre>
+                  </div>
+                </div>
+
+                <div class="code-section">
+                  <h3>Security-Hardened Dockerfile</h3>
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span>backend/Dockerfile</span>
+                      <button class="copy-btn" onclick="copyCode('dockerfile')">
+                        <i class="fas fa-copy"></i>
+                      </button>
+                    </div>
+                    <pre
+                      id="dockerfile"
+                    ><code># Multi-stage build for security and size optimization
+FROM node:18-alpine AS builder
+
+# Create app directory
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci --only=production && npm cache clean --force
+
+# Copy source code
+COPY . .
+
+# Build application
+RUN npm run build
+
+# Production stage
+FROM node:18-alpine AS production
+
+# Create non-root user
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nodeuser -u 1001
+
+# Set working directory
+WORKDIR /app
+
+# Copy built application from builder stage
+COPY --from=builder --chown=nodeuser:nodejs /app/dist ./dist
+COPY --from=builder --chown=nodeuser:nodejs /app/node_modules ./node_modules
+COPY --from=builder --chown=nodeuser:nodejs /app/package*.json ./
+
+# Install security updates
+RUN apk update && apk upgrade && \
+    apk add --no-cache dumb-init && \
+    rm -rf /var/cache/apk/*
+
+# Switch to non-root user
+USER nodeuser
+
+# Expose port
+EXPOSE 5000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD node healthcheck.js
+
+# Use dumb-init for proper signal handling
+ENTRYPOINT ["dumb-init", "--"]
+
+# Start application
+CMD ["node", "dist/server.js"]</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <div class="content-section">
+                <h2>Monitoring & Observability</h2>
+                <p>
+                  Comprehensive monitoring setup provides insights into
+                  application performance, resource utilization, and system
+                  health.
+                </p>
+
+                <div class="monitoring-features">
+                  <div class="monitoring-item">
+                    <i class="fas fa-heartbeat"></i>
+                    <h4>Health Checks</h4>
+                    <p>
+                      Automated health monitoring for all services with
+                      automatic restart capabilities
+                    </p>
+                  </div>
+
+                  <div class="monitoring-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Metrics Collection</h4>
+                    <p>
+                      Prometheus scrapes metrics from all services including
+                      custom application metrics
+                    </p>
+                  </div>
+
+                  <div class="monitoring-item">
+                    <i class="fas fa-bell"></i>
+                    <h4>Alerting</h4>
+                    <p>
+                      Configured alerts for high CPU usage, memory consumption,
+                      and service failures
+                    </p>
+                  </div>
+
+                  <div class="monitoring-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <h4>Visualization</h4>
+                    <p>
+                      Grafana dashboards for real-time monitoring and historical
+                      trend analysis
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="content-section">
+                <h2>Deployment & CI/CD</h2>
+                <p>
+                  The project includes automated deployment pipelines and CI/CD
+                  configuration for seamless development and production
+                  deployments.
+                </p>
+
+                <div class="deployment-steps">
+                  <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                      <h4>Code Commit</h4>
+                      <p>
+                        Developer pushes code to repository triggering automated
+                        pipeline
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                      <h4>Testing & Security Scan</h4>
+                      <p>
+                        Automated tests run along with container security
+                        scanning
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                      <h4>Image Building</h4>
+                      <p>
+                        Docker images built and pushed to container registry
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                      <h4>Deployment</h4>
+                      <p>
+                        Automated deployment to staging/production environments
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="content-section">
+                <h2>Getting Started</h2>
+                <p>
+                  Follow these steps to run the multi-service application
+                  locally:
+                </p>
+
+                <div class="deployment-steps">
+                  <div class="step">
+                    <h4><span class="step-number">1</span>Prerequisites</h4>
+                    <ul>
+                      <li>
+                        <a
+                          href="https://www.docker.com/get-started"
+                          target="_blank"
+                          >Docker</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://docs.docker.com/compose/"
+                          target="_blank"
+                          >Docker Compose v2.22+</a
+                        >
+                      </li>
+                      <li>
+                        <a href="https://git-scm.com/" target="_blank">Git</a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="step">
+                    <h4><span class="step-number">2</span>Clone Repository</h4>
+                    <div class="code-block">
+                      <div class="code-header">
+                        <span>Terminal</span>
+                        <button
+                          class="copy-btn"
+                          onclick="copyCode('clone-repo')"
+                        >
+                          <i class="fas fa-copy"></i>
+                        </button>
+                      </div>
+                      <pre
+                        id="clone-repo"
+                      ><code>git clone https://github.com/IbraheemA05/Multi-Service-Docker-Application.git
+cd Multi-Service-Docker-Application</code></pre>
+                    </div>
+                  </div>
+
+                  <div class="step">
+                    <h4><span class="step-number">3</span>Environment Setup</h4>
+                    <div class="code-block">
+                      <div class="code-header">
+                        <span>Configuration</span>
+                        <button
+                          class="copy-btn"
+                          onclick="copyCode('env-setup')"
+                        >
+                          <i class="fas fa-copy"></i>
+                        </button>
+                      </div>
+                      <pre id="env-setup"><code># Copy environment template
+cp .env.example .env
+
+# Create secrets directory and add MongoDB password
+mkdir -p secrets
+echo "your_secure_mongo_password" > secrets/mongo_root_password.txt</code></pre>
+                    </div>
+                  </div>
+
+                  <div class="step">
+                    <h4><span class="step-number">4</span>Build and Run</h4>
+                    <div class="code-block">
+                      <div class="code-header">
+                        <span>Docker Commands</span>
+                        <button
+                          class="copy-btn"
+                          onclick="copyCode('docker-run')"
+                        >
+                          <i class="fas fa-copy"></i>
+                        </button>
+                      </div>
+                      <pre
+                        id="docker-run"
+                      ><code># Clean build and start services
+docker compose down -v
+docker compose build --no-cache
+docker compose up
+
+# Access the application
+# Frontend: http://localhost/
+# API: http://localhost:5001/api
+# MongoDB: localhost:27023
+# Redis: localhost:6379</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="content-section">
+                <h2>Learning Outcomes</h2>
+                <p>
+                  This project provided comprehensive hands-on experience with
+                  modern containerization technologies and DevOps practices.
+                </p>
+
+                <div class="outcomes-grid">
+                  <div class="outcome">
+                    <i class="fab fa-docker"></i>
+                    <h4>Container Technologies</h4>
+                    <ul>
+                      <li>Docker containerization best practices</li>
+                      <li>Multi-stage build optimization</li>
+                      <li>Container orchestration with Docker Compose</li>
+                      <li>Volume and network management</li>
+                    </ul>
+                  </div>
+
+                  <div class="outcome">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Security Practices</h4>
+                    <ul>
+                      <li>Container security hardening</li>
+                      <li>Secrets management implementation</li>
+                      <li>Network security configuration</li>
+                      <li>Vulnerability scanning integration</li>
+                    </ul>
+                  </div>
+
+                  <div class="outcome">
+                    <i class="fas fa-database"></i>
+                    <h4>Database & Caching</h4>
+                    <ul>
+                      <li>MongoDB database integration</li>
+                      <li>Redis caching implementation</li>
+                      <li>Data persistence with Docker volumes</li>
+                      <li>Database initialization scripts</li>
+                    </ul>
+                  </div>
+
+                  <div class="outcome">
+                    <i class="fas fa-cogs"></i>
+                    <h4>DevOps Integration</h4>
+                    <ul>
+                      <li>CI/CD pipeline design</li>
+                      <li>Automated testing integration</li>
+                      <li>Infrastructure as Code principles</li>
+                      <li>Production deployment strategies</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sidebar">
+              <div class="toc">
+                <h3>Table of Contents</h3>
+                <ul>
+                  <li><a href="#overview">Project Overview</a></li>
+                  <li><a href="#architecture">Service Architecture</a></li>
+                  <li><a href="#features">Key Features</a></li>
+                  <li><a href="#technical">Technical Implementation</a></li>
+                  <li><a href="#getting-started">Getting Started</a></li>
+                  <li><a href="#security">Security Implementation</a></li>
+                  <li><a href="#outcomes">Learning Outcomes</a></li>
+                </ul>
+              </div>
+
+              <div class="project-info">
+                <h3>Project Information</h3>
+                <div class="info-item"><strong>Status:</strong> Completed</div>
+                <div class="info-item">
+                  <strong>Technologies:</strong> Docker, Node.js, React,
+                  MongoDB, Redis
+                </div>
+                <div class="info-item">
+                  <strong>Tools Used:</strong> Docker Compose, NGINX, Vite
+                </div>
+                <div class="info-item">
+                  <strong>Lines of Code:</strong> ~2,500
+                </div>
+              </div>
+
+              <div class="external-links">
+                <h3>Resources</h3>
+                <a
+                  href="https://github.com/IbraheemA05/Multi-Service-Docker-Application"
+                  target="_blank"
+                  class="external-link"
+                >
+                  <i class="fab fa-github"></i>
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Get In Touch</h3>
+            <p>
+              Let's connect and discuss cybersecurity, cloud engineering, or
+              potential collaborations!
+            </p>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Projects</a></li>
+              <li><a href="../tryhackme/index.html">TryHackMe</a></li>
+              <li><a href="../articles/index.html">Articles</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Connect</h3>
+            <div class="footer-social">
+              <a href="https://x.com/IbraheemA50" target="_blank"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/ademiloye-al-hanif-ibraheem-4b5a3027a/"
+                target="_blank"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a href="mailto:ademiloyealhanifibraheem@gmail.com"
+                ><i class="fas fa-envelope"></i
+              ></a>
+              <a href="https://github.com/IbraheemA05" target="_blank"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 Ibraheem Ademiloye. All rights reserved.</p>
+          <p class="footer-motto">Defensive By Offensive!</p>
+        </div>
+      </footer>
+    </div>
+
+    <style>
+      /* Additional styles for multi-service project */
+      .architecture-diagram {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem;
+        margin: 2rem 0;
+      }
+
+      .service-layer {
+        margin-bottom: 2rem;
+      }
+
+      .service-layer h4 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        text-align: center;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--primary-color);
+      }
+
+      .service-group {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .service-box {
+        background: var(--background-dark);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1rem;
+        min-width: 150px;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .service-box:hover {
+        border-color: var(--primary-color);
+        transform: translateY(-2px);
+      }
+
+      .service-box i {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      .service-box.frontend i {
+        color: #61dafb;
+      }
+      .service-box.proxy i {
+        color: #269539;
+      }
+      .service-box.api i {
+        color: #68a063;
+      }
+      .service-box.auth i {
+        color: var(--primary-color);
+      }
+      .service-box.database i {
+        color: #336791;
+      }
+      .service-box.cache i {
+        color: #dc382d;
+      }
+      .service-box.monitoring i {
+        color: #e6522c;
+      }
+      .service-box.visualization i {
+        color: #f46800;
+      }
+
+      .service-box span {
+        display: block;
+        color: var(--text-primary);
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+      }
+
+      .service-box small {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .feature-card {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 255, 136, 0.1);
+      }
+
+      .feature-card i {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .feature-card h4 {
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .security-measures {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+
+      .security-category {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1.5rem;
+      }
+
+      .security-category h4 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .security-category h4::before {
+        content: "🔒";
+        font-size: 1.2rem;
+      }
+
+      .security-category ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .security-category li {
+        padding: 0.5rem 0;
+        color: var(--text-secondary);
+        position: relative;
+        padding-left: 1.5rem;
+      }
+
+      .security-category li::before {
+        content: "✓";
+        color: var(--primary-color);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+      }
+
+      .monitoring-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .monitoring-item {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      .monitoring-item i {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .monitoring-item h4 {
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .deployment-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .step {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .step:hover {
+        border-color: var(--primary-color);
+      }
+
+      .step-number {
+        width: 40px;
+        height: 40px;
+        background: var(--primary-color);
+        color: var(--background-dark);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        flex-shrink: 0;
+      }
+
+      .step-content h4 {
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .step-content p {
+        color: var(--text-secondary);
+        margin: 0;
+      }
+
+      @media (max-width: 768px) {
+        .service-group {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .service-box {
+          min-width: 200px;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .security-measures {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+
+    <script>
+      function copyCode(elementId) {
+        const code = document.getElementById(elementId).textContent;
+        navigator.clipboard.writeText(code).then(() => {
+          const btn = event.target;
+          const originalText = btn.innerHTML;
+          btn.innerHTML = '<i class="fas fa-check"></i>';
+          setTimeout(() => {
+            btn.innerHTML = originalText;
+          }, 2000);
+        });
+      }
+    </script>
+    <script src="../../script.js"></script>
+  </body>
+</html>

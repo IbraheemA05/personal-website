@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ibraheem's Cybersecurity Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="logo">
+          <i class="fas fa-terminal"></i>
+          <span>ibraheemA05@cybersec:~$</span>
+        </div>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="nav" id="nav">
+          <a href="index.html" class="nav-link active">Home</a>
+          <a href="posts/tryhackme/index.html" class="nav-link">TryHackMe</a>
+          <a href="posts/articles/index.html" class="nav-link">Articles</a>
+          <a href="posts/projects/index.html" class="nav-link">Projects</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+      </header>
+
+      <main class="main">
+        <section class="hero">
+          <div class="hero-content">
+            <h1 class="hero-title">Welcome to My Cybersecurity Portfolio</h1>
+            <div class="typewriter">
+              <p class="hero-description">
+                Hi, I'm <span class="highlight">Ibraheem</span>, 19 years old.
+                I'm passionate about cybersecurity, web penetration testing, and
+                cloud engineering. I continuously learn and grow in the field,
+                exploring new challenges and opportunities.
+              </p>
+            </div>
+
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/ademiloye-al-hanif-ibraheem-4b5a3027a/"
+                target="_blank"
+                class="social-link"
+              >
+                <i class="fab fa-linkedin"></i>
+                <span>LinkedIn</span>
+              </a>
+              <a
+                href="https://x.com/IbraheemA50"
+                target="_blank"
+                class="social-link"
+              >
+                <i class="fab fa-twitter"></i>
+                <span>Twitter/X</span>
+              </a>
+              <a
+                href="mailto:ademiloyealhanifibraheem@gmail.com"
+                class="social-link"
+              >
+                <i class="fas fa-envelope"></i>
+                <span>Email</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="terminal-animation">
+            <div class="terminal">
+              <div class="terminal-header">
+                <span class="terminal-title">ibraheemA05@cybersec:~$</span>
+                <div class="terminal-controls">
+                  <span class="control minimize"></span>
+                  <span class="control maximize"></span>
+                  <span class="control close"></span>
+                </div>
+              </div>
+              <div class="terminal-body">
+                <div class="terminal-line">
+                  <span class="prompt">ibraheemA05@cybersec:~$</span>
+                  <span class="command">whoami</span>
+                </div>
+                <div class="terminal-line output">
+                  Cybersecurity Enthusiast | Penetration Tester | Cloud Engineer
+                </div>
+                <div class="terminal-line">
+                  <span class="prompt">ibraheemA05@cybersec:~$</span>
+                  <span class="command">cat skills.txt</span>
+                </div>
+                <div class="terminal-line output">Web Penetration Testing</div>
+                <div class="terminal-line output">Cloud Security</div>
+                <div class="terminal-line output">
+                  Docker & Containerization
+                </div>
+                <div class="terminal-line output">AWS Security Auditing</div>
+                <div class="terminal-line">
+                  <span class="prompt">ibraheemA05@cybersec:~$</span>
+                  <span class="cursor">_</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="about-section">
+          <h2 class="section-title">
+            <i class="fas fa-user-shield"></i>
+            About Me
+          </h2>
+          <div class="about-content">
+            <p>
+              Feel free to explore my write-ups and projects here. I share my
+              learning journey in cybersecurity, from TryHackMe challenges to
+              real-world cloud security implementations. Enjoy reading!
+            </p>
+          </div>
+        </section>
+
+        <section class="featured-content">
+          <h2 class="section-title">
+            <i class="fas fa-star"></i>
+            Featured Content
+          </h2>
+
+          <div class="content-grid">
+            <div class="content-card">
+              <div class="card-icon">
+                <i class="fas fa-flag"></i>
+              </div>
+              <h3>TryHackMe Writeups</h3>
+              <p>
+                Comprehensive writeups of TryHackMe challenges and learning
+                paths.
+              </p>
+              <a href="posts/tryhackme/index.html" class="card-link">
+                View Writeups <i class="fas fa-arrow-right"></i>
+              </a>
+              <div class="card-badge">Coming Soon</div>
+            </div>
+
+            <div class="content-card">
+              <div class="card-icon">
+                <i class="fas fa-code"></i>
+              </div>
+              <h3>Projects</h3>
+              <p>
+                Hands-on cybersecurity and cloud engineering projects with
+                detailed documentation.
+              </p>
+              <a href="posts/projects/index.html" class="card-link">
+                View Projects <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+
+            <div class="content-card">
+              <div class="card-icon">
+                <i class="fas fa-newspaper"></i>
+              </div>
+              <h3>Articles</h3>
+              <p>
+                Technical articles and insights on cybersecurity trends and
+                methodologies.
+              </p>
+              <a href="posts/articles/index.html" class="card-link">
+                Read Articles <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section class="stats-section">
+          <h2 class="section-title">
+            <i class="fas fa-chart-line"></i>
+            Portfolio Stats
+          </h2>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-number">3</div>
+              <div class="stat-label">Active Projects</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">0</div>
+              <div class="stat-label">TryHackMe Writeups</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">1</div>
+              <div class="stat-label">Articles Published</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">1</div>
+              <div class="stat-label">Security Audits</div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer" id="contact">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Get In Touch</h3>
+            <p>
+              Let's connect and discuss cybersecurity, cloud engineering, or
+              potential collaborations!
+            </p>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="posts/projects/index.html">Projects</a></li>
+              <li><a href="posts/tryhackme/index.html">TryHackMe</a></li>
+              <li><a href="posts/articles/index.html">Articles</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Connect</h3>
+            <div class="footer-social">
+              <a href="https://x.com/IbraheemA50" target="_blank"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/ademiloye-al-hanif-ibraheem-4b5a3027a/"
+                target="_blank"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a href="mailto:ademiloyealhanifibraheem@gmail.com"
+                ><i class="fas fa-envelope"></i
+              ></a>
+              <a href="https://github.com/IbraheemA05" target="_blank"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 IbraheemA05. All rights reserved.</p>
+          <p class="footer-motto">Defensive By Offensive!</p>
+        </div>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

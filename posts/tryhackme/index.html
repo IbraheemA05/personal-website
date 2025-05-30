@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TryHackMe Writeups - Ibraheem's Portfolio</title>
+    <link rel="stylesheet" href="../../styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="logo">
+          <i class="fas fa-terminal"></i>
+          <span>ibraheemA05@cybersec:~$</span>
+        </div>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="nav" id="nav">
+          <a href="../../index.html" class="nav-link">Home</a>
+          <a href="index.html" class="nav-link active">TryHackMe</a>
+          <a href="../articles/index.html" class="nav-link">Articles</a>
+          <a href="../projects/index.html" class="nav-link">Projects</a>
+          <a href="../../index.html#contact" class="nav-link">Contact</a>
+        </nav>
+      </header>
+
+      <main class="main">
+        <section class="page-header">
+          <div class="page-header-content">
+            <h1 class="page-title">
+              <i class="fas fa-flag"></i>
+              TryHackMe Writeups
+            </h1>
+            <p class="page-description">
+              Comprehensive writeups of TryHackMe challenges, CTFs, and learning
+              paths. Documenting my journey through cybersecurity challenges and
+              skill development.
+            </p>
+          </div>
+        </section>
+
+        <section class="coming-soon-section">
+          <div class="coming-soon-content">
+            <div class="coming-soon-icon">
+              <i class="fas fa-rocket"></i>
+            </div>
+
+            <h2 class="coming-soon-title">Writeups Coming Soon!</h2>
+
+            <p class="coming-soon-description">
+              I'm currently working on TryHackMe challenges and will be
+              publishing detailed writeups soon. These writeups will include
+              step-by-step solutions, methodology explanations, and key learning
+              points.
+            </p>
+
+            <div class="planned-content">
+              <h3>Planned Content</h3>
+              <div class="content-categories">
+                <div class="category-card">
+                  <i class="fas fa-globe"></i>
+                  <h4>Web Application Security</h4>
+                  <p>
+                    OWASP Top 10, SQL injection, XSS, and web exploitation
+                    techniques
+                  </p>
+                </div>
+
+                <div class="category-card">
+                  <i class="fas fa-network-wired"></i>
+                  <h4>Network Security</h4>
+                  <p>
+                    Network enumeration, port scanning, and service exploitation
+                  </p>
+                </div>
+
+                <div class="category-card">
+                  <i class="fas fa-user-secret"></i>
+                  <h4>Privilege Escalation</h4>
+                  <p>
+                    Linux and Windows privilege escalation techniques and
+                    methodologies
+                  </p>
+                </div>
+
+                <div class="category-card">
+                  <i class="fas fa-search"></i>
+                  <h4>Digital Forensics</h4>
+                  <p>
+                    Evidence analysis, memory forensics, and incident response
+                  </p>
+                </div>
+
+                <div class="category-card">
+                  <i class="fas fa-lock"></i>
+                  <h4>Cryptography</h4>
+                  <p>
+                    Encryption algorithms, hash cracking, and cryptographic
+                    attacks
+                  </p>
+                </div>
+
+                <div class="category-card">
+                  <i class="fas fa-bug"></i>
+                  <h4>Reverse Engineering</h4>
+                  <p>
+                    Binary analysis, malware analysis, and exploitation
+                    development
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="progress-section">
+              <h3>Current Progress</h3>
+              <div class="progress-stats">
+                <div class="stat-item">
+                  <div class="stat-icon">
+                    <i class="fas fa-tasks"></i>
+                  </div>
+                  <div class="stat-info">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Completed Writeups</div>
+                  </div>
+                </div>
+
+                <div class="stat-item">
+                  <div class="stat-icon">
+                    <i class="fas fa-clock"></i>
+                  </div>
+                  <div class="stat-info">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Challenges in Progress</div>
+                  </div>
+                </div>
+
+                <div class="stat-item">
+                  <div class="stat-icon">
+                    <i class="fas fa-calendar"></i>
+                  </div>
+                  <div class="stat-info">
+                    <div class="stat-number">June 2025</div>
+                    <div class="stat-label">Expected First Release</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="notification-signup">
+              <h3>Stay Updated</h3>
+              <p>
+                Connect with me on social media to get notified when new
+                writeups are published!
+              </p>
+
+              <div class="social-links">
+                <a
+                  href="https://x.com/IbraheemA50"
+                  target="_blank"
+                  class="social-link"
+                >
+                  <i class="fab fa-twitter"></i>
+                  <span>Follow on Twitter</span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/ademiloye-al-hanif-ibraheem-4b5a3027a/"
+                  target="_blank"
+                  class="social-link"
+                >
+                  <i class="fab fa-linkedin"></i>
+                  <span>Connect on LinkedIn</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="methodology-preview">
+              <h3>Writeup Methodology</h3>
+              <p>
+                Each writeup will follow a structured approach to ensure
+                comprehensive learning:
+              </p>
+
+              <div class="methodology-steps">
+                <div class="method-step">
+                  <div class="step-number">1</div>
+                  <div class="step-content">
+                    <h4>Initial Reconnaissance</h4>
+                    <p>
+                      Target identification, service enumeration, and
+                      information gathering
+                    </p>
+                  </div>
+                </div>
+
+                <div class="method-step">
+                  <div class="step-number">2</div>
+                  <div class="step-content">
+                    <h4>Vulnerability Assessment</h4>
+                    <p>
+                      Identifying potential attack vectors and security
+                      weaknesses
+                    </p>
+                  </div>
+                </div>
+
+                <div class="method-step">
+                  <div class="step-number">3</div>
+                  <div class="step-content">
+                    <h4>Exploitation</h4>
+                    <p>
+                      Step-by-step exploitation process with detailed
+                      explanations
+                    </p>
+                  </div>
+                </div>
+
+                <div class="method-step">
+                  <div class="step-number">4</div>
+                  <div class="step-content">
+                    <h4>Post-Exploitation</h4>
+                    <p>
+                      Privilege escalation, persistence, and evidence collection
+                    </p>
+                  </div>
+                </div>
+
+                <div class="method-step">
+                  <div class="step-number">5</div>
+                  <div class="step-content">
+                    <h4>Key Takeaways</h4>
+                    <p>
+                      Lessons learned, defensive measures, and skill development
+                      notes
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Get In Touch</h3>
+            <p>
+              Let's connect and discuss cybersecurity, cloud engineering, or
+              potential collaborations!
+            </p>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="../projects/index.html">Projects</a></li>
+              <li><a href="index.html">TryHackMe</a></li>
+              <li><a href="../articles/index.html">Articles</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Connect</h3>
+            <div class="footer-social">
+              <a href="https://x.com/IbraheemA50" target="_blank"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/ademiloye-al-hanif-ibraheem-4b5a3027a/"
+                target="_blank"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a href="mailto:ademiloyealhanifibraheem@gmail.com"
+                ><i class="fas fa-envelope"></i
+              ></a>
+              <a href="https://github.com/IbraheemA05" target="_blank"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 Ibraheem Ademiloye. All rights reserved.</p>
+          <p class="footer-motto">Defensive By Offensive!</p>
+        </div>
+      </footer>
+    </div>
+
+    <style>
+      /* Page header styles */
+      .page-header {
+        padding: 6rem 2rem 4rem;
+        background: var(--gradient-dark);
+        text-align: center;
+      }
+
+      .page-header-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .page-title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .page-description {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      /* Coming soon section */
+      .coming-soon-section {
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .coming-soon-content {
+        text-align: center;
+      }
+
+      .coming-soon-icon {
+        margin-bottom: 2rem;
+      }
+
+      .coming-soon-icon i {
+        font-size: 4rem;
+        color: var(--primary-color);
+        animation: pulse 2s infinite;
+      }
+
+      .coming-soon-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: var(--primary-color);
+      }
+
+      .coming-soon-description {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 3rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Planned content */
+      .planned-content {
+        margin: 4rem 0;
+        text-align: left;
+      }
+
+      .planned-content h3 {
+        font-size: 2rem;
+        color: var(--primary-color);
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .content-categories {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .category-card {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .category-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+        border-color: var(--primary-color);
+      }
+
+      .category-card i {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .category-card h4 {
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+      }
+
+      .category-card p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      /* Progress section */
+      .progress-section {
+        margin: 4rem 0;
+        background: var(--background-medium);
+        border-radius: 16px;
+        padding: 3rem 2rem;
+      }
+
+      .progress-section h3 {
+        font-size: 2rem;
+        color: var(--primary-color);
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .progress-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+
+      .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        background: var(--background-dark);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 1.5rem;
+      }
+
+      .stat-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--gradient-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .stat-icon i {
+        font-size: 1.5rem;
+        color: var(--background-dark);
+      }
+
+      .stat-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary-color);
+      }
+
+      .stat-label {
+        color: var(--text-secondary);
+        font-weight: 500;
+      }
+
+      /* Notification signup */
+      .notification-signup {
+        margin: 4rem 0;
+        text-align: center;
+      }
+
+      .notification-signup h3 {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .notification-signup p {
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 50px;
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-weight: 500;
+      }
+
+      .social-link:hover {
+        background: var(--primary-color);
+        color: var(--background-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px var(--shadow-color);
+      }
+
+      /* Methodology preview */
+      .methodology-preview {
+        margin: 4rem 0;
+        text-align: left;
+      }
+
+      .methodology-preview h3 {
+        font-size: 2rem;
+        color: var(--primary-color);
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      .methodology-preview > p {
+        text-align: center;
+        color: var(--text-secondary);
+        margin-bottom: 3rem;
+      }
+
+      .methodology-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .method-step {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem;
+        transition: all 0.3s ease;
+      }
+
+      .method-step:hover {
+        border-color: var(--primary-color);
+        transform: translateX(5px);
+      }
+
+      .step-number {
+        width: 50px;
+        height: 50px;
+        background: var(--gradient-primary);
+        color: var(--background-dark);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+
+      .step-content h4 {
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+      }
+
+      .step-content p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      /* Animations */
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .page-title {
+          font-size: 2.5rem;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .coming-soon-title {
+          font-size: 2rem;
+        }
+
+        .content-categories {
+          grid-template-columns: 1fr;
+        }
+
+        .progress-stats {
+          grid-template-columns: 1fr;
+        }
+
+        .stat-item {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .social-links {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .method-step {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
+
+    <script src="../../script.js"></script>
+  </body>
+</html>

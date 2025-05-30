@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      AWS Cloud Security Audit & Enumeration Lab - Ibraheem's Portfolio
+    </title>
+    <link rel="stylesheet" href="../../styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="logo">
+          <i class="fas fa-terminal"></i>
+          <span>ibraheemA05@cybersec:~$</span>
+        </div>
+        <nav class="nav">
+          <a href="../../index.html" class="nav-link">Home</a>
+          <a href="../tryhackme/index.html" class="nav-link">TryHackMe</a>
+          <a href="index.html" class="nav-link active">Articles</a>
+          <a href="../projects/index.html" class="nav-link">Projects</a>
+          <a href="../../index.html#contact" class="nav-link">Contact</a>
+        </nav>
+      </header>
+
+      <main class="main">
+        <section class="project-hero">
+          <div class="project-hero-content">
+            <div class="breadcrumb">
+              <a href="../../index.html">Home</a>
+              <span>/</span>
+              <a href="index.html">Articles</a>
+              <span>/</span>
+              <span>AWS Cloud Security Audit</span>
+            </div>
+
+            <h1 class="project-hero-title">
+              <i class="fab fa-aws"></i>
+              Discover AWS Organization ID via S3 Bucket using Conditional Logic
+            </h1>
+
+            <div class="project-meta-info">
+              <div class="meta-item">
+                <i class="fas fa-calendar"></i>
+                <span>Completed: April 12, 2025</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>Platform: CybrLabs</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-tag"></i>
+                <span>Category: IAM Policy Exploitation</span>
+              </div>
+            </div>
+
+            <p class="project-hero-description">
+              A practical demonstration of how attackers can abuse IAM policy condition misconfigurations (aws:ResourceOrgID) to discover AWS Organization IDs through conditional brute-force techniques on vulnerable S3 buckets.
+            </p>
+          </div>
+        </section>
+
+        <section class="project-content">
+          <div class="content-wrapper">
+            <div class="main-content">
+              <div class="content-section">
+                <h2>🎯 Objective</h2>
+                <p>
+                  To demonstrate how attackers can abuse the <code>aws:ResourceOrgID</code> condition key to brute-force AWS Organization IDs by interacting with a vulnerable S3 bucket using IAM role assumption and conditional access attempts.
+                </p>
+
+                <div class="highlight-box">
+                  <h3>🧾 Lab Overview</h3>
+                  <ul>
+                    <li>
+                      <strong>Lab Title:</strong> Discover AWS Organization ID via S3 Bucket
+                    </li>
+                    <li>
+                      <strong>Platform:</strong> CybrLabs
+                    </li>
+                    <li>
+                      <strong>Focus:</strong> IAM policy condition misconfiguration exploitation
+                    </li>
+                    <li>
+                      <strong>Target:</strong> S3 bucket with vulnerable aws:ResourceOrgID condition
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="content-section">
+                <h2>🛠 Tools Used</h2>
+                <p>
+                  The lab utilized a focused set of AWS tools and custom Python scripts to exploit the IAM policy misconfiguration and demonstrate the vulnerability.
+                </p>
+
+                <div class="tools-grid">
+                  <div class="tool-category">
+                    <h4>AWS Services</h4>
+                    <ul>
+                      <li>
+                        <strong>AWS CLI:</strong> Primary interface for API calls and authentication
+                      </li>
+                      <li>
+                        <strong>IAM:</strong> Role enumeration and policy analysis
+                      </li>
+                      <li>
+                        <strong>STS:</strong> Security Token Service for identity verification
+                      </li>
+                      <li>
+                        <strong>S3:</strong> Target bucket for conditional access testing
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="tool-category">
+                    <h4>Custom Scripts</h4>
+                    <ul>
+                      <li>
+                        <strong>conditional-love.py:</strong> Python3 script for brute-forcing Organization IDs
+                      </li>
+                      <li>
+                        <strong>CloudTrail Analysis:</strong> Simulated log review for enumeration detection
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="content-section">
+                <h2>📚 Methodology & Steps Performed</h2>
+                <p>
+                  The exploitation followed a systematic approach to discover and abuse the IAM policy misconfiguration, demonstrating real-world attack techniques.
+                </p>
+
+                <div class="methodology-steps">
+                  <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                      <h4>AWS CLI Configuration</h4>
+                      <p>
+                        Configured the AWS CLI with valid access and secret keys to initiate authenticated API calls
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                      <h4>Identity Verification</h4>
+                      <p>
+                        Queried active credentials to verify identity and account number using <code>aws sts get-caller-identity</code>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                      <h4>IAM Enumeration</h4>
+                      <p>
+                        Listed all IAM users and roles to explore permissions and entities in the AWS account
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                      <h4>Role Analysis: S3AccessImages</h4>
+                      <p>
+                        Searched for and analyzed the S3AccessImages role potentially linked to S3 bucket access
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                      <h4>Policy Extraction</h4>
+                      <p>
+                        Retrieved inline policies to analyze permissions and identify the vulnerable aws:ResourceOrgID condition
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                      <h4>Organization ID Brute-force</h4>
+                      <p>
+                        Used conditional-love.py script to enumerate possible AWS Organization IDs through conditional access testing
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="content-section">
+                <h2>🔍 Key Findings & Analysis</h2>
+
+                <div class="finding">
+                  <div class="finding-header critical">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h4>Critical: IAM Policy Condition Misconfiguration</h4>
+                  </div>
+                  <div class="finding-content">
+                    <p>
+                      <strong>Issue:</strong> The S3AccessImages role policy allowed <code>s3:*</code> actions but used a StringLike condition on <code>aws:ResourceOrgID</code>, creating a blind brute-force opportunity
+                    </p>
+                    <p>
+                      <strong>Impact:</strong> Attackers can enumerate AWS Organization IDs through conditional access attempts
+                    </p>
+                    <p>
+                      <strong>Evidence:</strong> Policy analysis revealed vulnerable condition key usage without proper restrictions
+                    </p>
+                  </div>
+                </div>
+
+                <div class="finding">
+                  <div class="finding-header high">
+                    <i class="fas fa-search"></i>
+                    <h4>High: Successful Organization ID Enumeration</h4>
+                  </div>
+                  <div class="finding-content">
+                    <p>
+                      <strong>Issue:</strong> Successfully brute-forced AWS Organization ID through conditional policy testing
+                    </p>
+                    <p>
+                      <strong>Method:</strong> Used conditional-love.py script targeting <code>s3://img.cybrlabs.io/</code> with role <code>arn:aws:iam::565765288591:role/S3AccessImages</code>
+                    </p>
+                    <p>
+                      <strong>Impact:</strong> Exposure of sensitive organizational infrastructure details
+                    </p>
+                  </div>
+                </div>
+
+                <div class="finding">
+                  <div class="finding-header medium">
+                    <i class="fas fa-file-alt"></i>
+                    <h4>Medium: CloudTrail Logging Gaps</h4>
+                  </div>
+                  <div class="finding-content">
+                    <p>
+                      <strong>Issue:</strong> Limited visibility into enumeration attempts through CloudTrail logging
+                    </p>
+                    <p>
+                      <strong>Impact:</strong> Brute-force activities may go undetected without proper monitoring
+                    </p>
+                    <p>
+                      <strong>Observation:</strong> Simulated logs showed detectable patterns: <code>"aws:ResourceOrgID": ["o-8qt9p69*"]</code>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="content-section">
+                <h2>🧠 Key Learnings & Security Implications</h2>
+                <p>
+                  This hands-on lab provided critical insights into AWS IAM policy vulnerabilities and their real-world exploitation potential.
+                </p>
+
+                <div class="outcomes-grid">
+                  <div class="outcome">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>🔐 Security Implications</h4>
+                    <ul>
+                      <li>IAM policy conditions like aws:ResourceOrgID can be exploited for enumeration</li>
+                      <li>Lack of monitoring increases risk of undetected brute-force attempts</li>
+                      <li>Overly permissive resource policies enable lateral movement</li>
+                      <li>Organization ID exposure can reveal infrastructure details</li>
+                    </ul>
+                  </div>
+
+                  <div class="outcome">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h4>🧠 Key Learnings</h4>
+                    <ul>
+                      <li>aws:ResourceOrgID must be used cautiously to prevent enumeration</li>
+                      <li>CloudTrail plays crucial role in identifying enumeration activities</li>
+                      <li>Security tools like GuardDuty can detect policy misconfigurations</li>
+                      <li>Hands-on practice deepens understanding of cloud attack vectors</li>
+                    </ul>
+                  </div>
+
+                  <div class="outcome">
+                    <i class="fas fa-tools"></i>
+                    <h4>🛠 Technical Skills</h4>
+                    <ul>
+                      <li>IAM policy analysis and condition key exploitation</li>
+                      <li>Python scripting for automated enumeration</li>
+                      <li>AWS CLI proficiency for cloud reconnaissance</li>
+                      <li>CloudTrail log analysis for attack detection</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="content-section">
+                <h2>💻 Technical Implementation</h2>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span>AWS CLI Commands - IAM Role Analysis</span>
+                    <button class="copy-btn" onclick="copyCode('iam-enum')">
+                      <i class="fas fa-copy"></i>
+                    </button>
+                  </div>
+                  <pre id="iam-enum"><code># Configure AWS CLI
+aws configure
+
+# Verify current identity
+aws sts get-caller-identity
+
+# List all IAM users and roles
+aws iam list-users
+aws iam list-roles
+
+# Query specific role details
+aws iam list-roles --query "Roles[?RoleName=='S3AccessImages']"
+
+# List inline role policies
+aws iam list-role-policies --role-name S3AccessImages
+
+# Extract policy details
+aws iam get-role-policy \
+  --role-name S3AccessImages \
+  --policy-name AccessS3BucketObjects</code></pre>
+                </div>
+
+                <div class="code-block">
+                  <div class="code-header">
+                    <span>Organization ID Brute-force Script Execution</span>
+                    <button class="copy-btn" onclick="copyCode('brute-force')">
+                      <i class="fas fa-copy"></i>
+                    </button>
+                  </div>
+                  <pre id="brute-force"><code># Execute conditional brute-force attack
+python3 conditional-love.py \
+  --role arn:aws:iam::565765288591:role/S3AccessImages \
+  --target s3://img.cybrlabs.io/ \
+  --action=s3:HeadObject \
+  --condition=aws:ResourceOrgID \
+  --alphabet="0123456789abcdefghijklmnopqrstuvwxyz-"
+
+# Purpose: Test various aws:ResourceOrgID values
+# to trigger successful response based on valid Org ID match</code></pre>
+                </div>
+
+                <div class="code-block">
+                  <div class="code-header">
+                    <span>Simulated CloudTrail Log Pattern</span>
+                    <button class="copy-btn" onclick="copyCode('cloudtrail')">
+                      <i class="fas fa-copy"></i>
+                    </button>
+                  </div>
+                  <pre id="cloudtrail"><code># Example enumeration patterns visible in CloudTrail
+{
+  "eventTime": "2025-04-12T10:15:30Z",
+  "eventName": "AssumeRole",
+  "sourceIPAddress": "203.0.113.12",
+  "userIdentity": {
+    "type": "IAMUser",
+    "userName": "attacker-user"
+  },
+  "requestParameters": {
+    "roleArn": "arn:aws:iam::565765288591:role/S3AccessImages",
+    "conditions": {
+      "aws:ResourceOrgID": ["o-8qt9p69*"]
+    }
+  }
+}</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="sidebar">
+              <div class="toc">
+                <h3>Table of Contents</h3>
+                <ul>
+                  <li><a href="#objective">🎯 Objective</a></li>
+                  <li><a href="#tools">🛠 Tools Used</a></li>
+                  <li><a href="#methodology">📚 Methodology</a></li>
+                  <li><a href="#findings">🔍 Key Findings</a></li>
+                  <li><a href="#learnings">🧠 Key Learnings</a></li>
+                  <li><a href="#technical">💻 Technical Implementation</a></li>
+                  <li><a href="#recommendations">✅ Recommendations</a></li>
+                </ul>
+              </div>
+
+              <div class="project-info">
+                <h3>Lab Information</h3>
+                <div class="info-item"><strong>Status:</strong> Completed</div>
+                <div class="info-item">
+                  <strong>Platform:</strong> CybrLabs
+                </div>
+                <div class="info-item">
+                  <strong>Tools Used:</strong> AWS CLI, Python3, conditional-love.py
+                </div>
+                <div class="info-item">
+                  <strong>Target:</strong> S3 bucket with IAM policy misconfiguration
+                </div>
+                <div class="info-item">
+                  <strong>Technique:</strong> aws:ResourceOrgID brute-force enumeration
+                </div>
+              </div>
+
+              <div class="external-links">
+                <h3>Resources</h3>
+                <a
+                  href="https://1drv.ms/w/c/22de005f583a57f0/EeFnmx11uJxOqKpSmDgzmZ4Br_ehCtl4zZ4xE1R0a30HNg?e=aVtnVJ"
+                  target="_blank"
+                  class="external-link"
+                >
+                  <i class="fas fa-file-alt"></i>
+                  View Full Lab Report
+                </a>
+              </div>
+              <div class="content-section">
+                <h2>✅ Recommendations</h2>
+                <p>
+                  Based on the successful exploitation, here are critical security recommendations to prevent similar vulnerabilities.
+                </p>
+
+                <div class="finding">
+                  <div class="finding-header high" style="background: rgba(40, 202, 66, 0.2); border-left: 4px solid #28ca42;">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>IAM Policy Hardening</h4>
+                  </div>
+                  <div class="finding-content">
+                    <p>
+                      <strong>Action:</strong> Avoid using aws:ResourceOrgID alone for access control. Pair it with aws:PrincipalOrgID or more specific identity checks.
+                    </p>
+                    <p>
+                      <strong>Implementation:</strong> Review all IAM policies using condition keys and test for enumeration resistance.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="finding">
+                  <div class="finding-header high" style="background: rgba(40, 202, 66, 0.2); border-left: 4px solid #28ca42;">
+                    <i class="fas fa-eye"></i>
+                    <h4>Enhanced Monitoring</h4>
+                  </div>
+                  <div class="finding-content">
+                    <p>
+                      <strong>Action:</strong> Enable CloudTrail and GuardDuty for all regions to monitor IAM and S3-related activities.
+                    </p>
+                    <p>
+                      <strong>Benefit:</strong> Detection of brute-force enumeration attempts and suspicious role assumptions.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="finding">
+                  <div class="finding-header high" style="background: rgba(40, 202, 66, 0.2); border-left: 4px solid #28ca42;">
+                    <i class="fas fa-cogs"></i>
+                    <h4>Automated Security Auditing</h4>
+                  </div>
+                  <div class="finding-content">
+                    <p>
+                      <strong>Action:</strong> Regularly audit IAM roles, inline policies, and S3 bucket permissions using automated tools and scripts.
+                    </p>
+                    <p>
+                      <strong>Standards:</strong> Align policies with CIS Benchmarks and enforce them using AWS Config Rules.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Get In Touch</h3>
+            <p>
+              Let's connect and discuss cybersecurity, cloud engineering, or
+              potential collaborations!
+            </p>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Projects</a></li>
+              <li><a href="../tryhackme/index.html">TryHackMe</a></li>
+              <li><a href="../articles/index.html">Articles</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Connect</h3>
+            <div class="footer-social">
+              <a href="https://x.com/IbraheemA50" target="_blank"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/ademiloye-al-hanif-ibraheem-4b5a3027a/"
+                target="_blank"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a href="mailto:ademiloyealhanifibraheem@gmail.com"
+                ><i class="fas fa-envelope"></i
+              ></a>
+              <a href="https://github.com/IbraheemA05" target="_blank"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 Ibraheem Ademiloye. All rights reserved.</p>
+          <p class="footer-motto">Defensive By Offensive!</p>
+        </div>
+      </footer>
+    </div>
+
+    <style>
+      /* Project-specific styles */
+      .project-hero {
+        padding: 6rem 2rem 4rem;
+        background: var(--gradient-dark);
+      }
+
+      .project-hero-content {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .breadcrumb {
+        margin-bottom: 2rem;
+        color: var(--text-muted);
+      }
+
+      .breadcrumb a {
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+
+      .breadcrumb span {
+        margin: 0 0.5rem;
+      }
+
+      .project-hero-title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .project-meta-info {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-secondary);
+      }
+
+      .meta-item i {
+        color: var(--primary-color);
+      }
+
+      .project-hero-description {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      .project-content {
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .content-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 3rem;
+      }
+
+      .content-section {
+        margin-bottom: 3rem;
+      }
+
+      .content-section h2 {
+        color: var(--primary-color);
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 0.5rem;
+      }
+
+      .content-section h3 {
+        color: var(--text-primary);
+        font-size: 1.5rem;
+        margin: 2rem 0 1rem 0;
+      }
+
+      .content-section p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+
+      .highlight-box {
+        background: var(--background-medium);
+        border: 1px solid var(--primary-color);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .highlight-box h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .highlight-box ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .highlight-box li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .highlight-box li:last-child {
+        border-bottom: none;
+      }
+
+      .component-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .component-card {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      .component-card i {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .component-card h4 {
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .methodology-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+
+      .step {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
+
+      .step-number {
+        width: 40px;
+        height: 40px;
+        background: var(--primary-color);
+        color: var(--background-dark);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        flex-shrink: 0;
+      }
+
+      .step-content h4 {
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+
+      .tool-category {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1.5rem;
+      }
+
+      .tool-category h4 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .tool-category ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .tool-category li {
+        padding: 0.5rem 0;
+        color: var(--text-secondary);
+      }
+
+      .finding {
+        background: var(--background-medium);
+        border-radius: 8px;
+        margin: 2rem 0;
+        overflow: hidden;
+      }
+
+      .finding-header {
+        padding: 1rem 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .finding-header.critical {
+        background: rgba(255, 107, 53, 0.2);
+        border-left: 4px solid #ff6b35;
+      }
+
+      .finding-header.high {
+        background: rgba(255, 189, 46, 0.2);
+        border-left: 4px solid #ffbd2e;
+      }
+
+      .finding-header.medium {
+        background: rgba(40, 202, 66, 0.2);
+        border-left: 4px solid #28ca42;
+      }
+
+      .finding-header h4 {
+        color: var(--text-primary);
+        margin: 0;
+      }
+
+      .finding-content {
+        padding: 1.5rem;
+      }
+
+      .finding-content p {
+        margin-bottom: 0.5rem;
+      }
+
+      .outcomes-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+
+      .outcome {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1.5rem;
+      }
+
+      .outcome i {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .outcome h4 {
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+      }
+
+      .outcome ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .outcome li {
+        padding: 0.25rem 0;
+        color: var(--text-secondary);
+        position: relative;
+        padding-left: 1rem;
+      }
+
+      .outcome li::before {
+        content: "▸";
+        color: var(--primary-color);
+        position: absolute;
+        left: 0;
+      }
+
+      .code-block {
+        background: var(--background-dark);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        margin: 2rem 0;
+        overflow: hidden;
+      }
+
+      .code-header {
+        background: var(--background-light);
+        padding: 1rem 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .copy-btn {
+        background: var(--primary-color);
+        color: var(--background-dark);
+        border: none;
+        padding: 0.5rem;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .code-block pre {
+        padding: 1.5rem;
+        margin: 0;
+        overflow-x: auto;
+      }
+
+      .code-block code {
+        font-family: "Fira Code", monospace;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 100px;
+        height: fit-content;
+      }
+
+      .toc {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .toc h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .toc ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .toc li {
+        margin-bottom: 0.5rem;
+      }
+
+      .toc a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .toc a:hover {
+        color: var(--primary-color);
+      }
+
+      .project-info {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .project-info h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .info-item {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--border-color);
+        color: var(--text-secondary);
+      }
+
+      .info-item:last-child {
+        border-bottom: none;
+      }
+
+      .external-links {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1.5rem;
+      }
+
+      .external-links h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .external-link {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-secondary);
+        text-decoration: none;
+        padding: 0.75rem;
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        transition: all 0.3s ease;
+      }
+
+      .external-link:hover {
+        background: var(--primary-color);
+        color: var(--background-dark);
+      }
+
+      @media (max-width: 768px) {
+        .content-wrapper {
+          grid-template-columns: 1fr;
+        }
+
+        .project-hero-title {
+          font-size: 2rem;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .project-meta-info {
+          flex-direction: column;
+          gap: 1rem;
+        }
+      }
+    </style>
+
+    <script>
+      function copyCode(elementId) {
+        const code = document.getElementById(elementId).textContent;
+        navigator.clipboard.writeText(code).then(() => {
+          const btn = event.target;
+          const originalText = btn.innerHTML;
+          btn.innerHTML = '<i class="fas fa-check"></i>';
+          setTimeout(() => {
+            btn.innerHTML = originalText;
+          }, 2000);
+        });
+      }
+    </script>
+    <script src="../../script.js"></script>
+  </body>
+</html>
