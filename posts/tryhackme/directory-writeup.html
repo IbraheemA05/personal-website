@@ -232,6 +232,12 @@
                       identify which ports they were scanning/accessing.
                     </p>
                   </div>
+
+                  <div class="explanation-box">
+                    <p>
+                      <strong>Rabbit hole:</strong> At first, I tried to identify the open ports using Wireshark’s graphical interface. After spending several minutes without success, I realized I needed a more efficient approach. That’s when I switched to <strong>tshark</strong> (the CLI version of Wireshark), which allowed me to quickly filter and extract the port information I needed.
+                    </p>
+                  </div>
                 </div>
 
                 <div class="question-block">
@@ -310,7 +316,11 @@
                     </div>
                     <pre><code class="language-bash">hashcat -m 18200 hash.txt /usr/share/wordlists/rockyou.txt</code></pre>
                   </div>
-
+                  <div class="explanation-box">
+                    <p>
+                       <strong>Hashcat:</strong> I used Hashcat for password cracking. To run Hashcat effectively, you need to specify the correct module using the <code>-m</code> flag. In this case, I used module <code>18200</code>, which is designed for Kerberos AS-REP hashes. This allowed me to brute-force the hash and recover the user's password.
+                    </p>
+                  </div>
                   <div class="screenshot-box">
                     <h4><i class="fas fa-unlock"></i> Password Cracking Success</h4>
                     <div class="image-container">
