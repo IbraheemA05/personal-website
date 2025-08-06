@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Cybersecurity articles and tutorials by IbraheemA05. Sharing knowledge, insights, and experiences in the field of cybersecurity."
+    />
     <title>Articles - Ibraheem's Cybersecurity Blog</title>
     <link rel="stylesheet" href="../../styles.css" />
     <link
@@ -20,16 +24,24 @@
         <i class="fas fa-terminal"></i>
         <span>ibraheemA05@cybersec:~$</span>
       </div>
-      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+      <button
+        class="mobile-menu-toggle"
+        id="mobileMenuToggle"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+      >
         <span></span>
         <span></span>
         <span></span>
       </button>
-      <nav class="nav" id="nav">
+      <nav class="nav" id="nav" aria-label="Main navigation">
         <a href="../../index.html" class="nav-link">Home</a>
         <a href="../tryhackme/index.html" class="nav-link">TryHackMe</a>
-        <a href="index.html" class="nav-link active">Articles</a>
+        <a href="index.html" class="nav-link active" aria-current="page"
+          >Articles</a
+        >
         <a href="../projects/index.html" class="nav-link">Projects</a>
+        <a href="../labs/index.html" class="nav-link">Labs</a>
         <a href="mailto:ademiloyealhanifibraheem@gmail.com" class="nav-link"
           >Contact</a
         >
@@ -49,7 +61,6 @@
               through detailed articles and tutorials.
             </p>
           </div>
-
           <div class="terminal-simulation">
             <div class="terminal-header">
               <div class="terminal-buttons">
@@ -73,16 +84,44 @@
       <section class="content-section">
         <div class="container">
           <div class="section-header">
-            <h2>Coming Soon</h2>
+            <h2>Latest Articles</h2>
             <p>
-              I'm currently working on several cybersecurity articles covering
-              various topics from beginner to advanced levels.
+              Explore my cybersecurity articles covering various topics from
+              beginner to advanced levels.
             </p>
+          </div>
+
+          <div class="filter-container">
+            <div class="filter-tabs">
+              <button class="filter-tab active" data-filter="all">
+                All Articles
+              </button>
+              <button class="filter-tab" data-filter="published">
+                Published
+              </button>
+              <button class="filter-tab" data-filter="in-progress">
+                In Progress
+              </button>
+              <button class="filter-tab" data-filter="planned">Planned</button>
+            </div>
+            <div class="search-container">
+              <input
+                type="text"
+                id="article-search"
+                placeholder="Search articles..."
+                aria-label="Search articles"
+              />
+              <i class="fas fa-search"></i>
+            </div>
           </div>
 
           <div class="articles-grid">
             <!-- Published Article: AWS Cloud Security Audit -->
-            <div class="article-card published">
+            <article
+              class="article-card published"
+              data-status="published"
+              data-category="cloud-security"
+            >
               <div class="article-header">
                 <div class="article-category">Cloud Security</div>
                 <div class="article-status" data-status="published">
@@ -115,9 +154,13 @@
                   Read Article
                 </a>
               </div>
-            </div>
+            </article>
 
-            <div class="article-card coming-soon">
+            <article
+              class="article-card coming-soon"
+              data-status="in-progress"
+              data-category="security-fundamentals"
+            >
               <div class="article-header">
                 <div class="article-category">Security Fundamentals</div>
                 <div class="article-status" data-status="in-progress">
@@ -130,7 +173,7 @@
                 common threats, and defensive strategies for beginners.
               </p>
               <div class="article-meta">
-                <span class="article-date">Expected: Till futher notice</span>
+                <span class="article-date">Expected: Till further notice</span>
                 <span class="article-time">???</span>
               </div>
               <div class="article-topics">
@@ -138,9 +181,13 @@
                 <span class="topic">IDS/IPS</span>
                 <span class="topic">VPN</span>
               </div>
-            </div>
+            </article>
 
-            <div class="article-card coming-soon">
+            <article
+              class="article-card coming-soon"
+              data-status="planned"
+              data-category="web-security"
+            >
               <div class="article-header">
                 <div class="article-category">Web Security</div>
                 <div class="article-status" data-status="planned">Planned</div>
@@ -151,7 +198,7 @@
                 with practical examples and mitigation strategies.
               </p>
               <div class="article-meta">
-                <span class="article-date">Expected: Till futher notice</span>
+                <span class="article-date">Expected: Till further notice</span>
                 <span class="article-time">???</span>
               </div>
               <div class="article-topics">
@@ -159,9 +206,13 @@
                 <span class="topic">XSS</span>
                 <span class="topic">CSRF</span>
               </div>
-            </div>
+            </article>
 
-            <div class="article-card coming-soon">
+            <article
+              class="article-card coming-soon"
+              data-status="planned"
+              data-category="cloud-security"
+            >
               <div class="article-header">
                 <div class="article-category">Cloud Security</div>
                 <div class="article-status" data-status="planned">Planned</div>
@@ -172,7 +223,7 @@
                 including IAM, S3, and network security configurations.
               </p>
               <div class="article-meta">
-                <span class="article-date">Expected: Till futher notice</span>
+                <span class="article-date">Expected: Till further notice</span>
                 <span class="article-time">???</span>
               </div>
               <div class="article-topics">
@@ -180,9 +231,13 @@
                 <span class="topic">S3 Security</span>
                 <span class="topic">CloudTrail</span>
               </div>
-            </div>
+            </article>
 
-            <div class="article-card coming-soon">
+            <article
+              class="article-card coming-soon"
+              data-status="research"
+              data-category="penetration-testing"
+            >
               <div class="article-header">
                 <div class="article-category">Penetration Testing</div>
                 <div class="article-status" data-status="research">
@@ -195,7 +250,7 @@
                 testing lab using VirtualBox and various Linux distributions.
               </p>
               <div class="article-meta">
-                <span class="article-date">Expected: Till futher notice</span>
+                <span class="article-date">Expected: Till further notice</span>
                 <span class="article-time">???</span>
               </div>
               <div class="article-topics">
@@ -203,9 +258,13 @@
                 <span class="topic">Kali Linux</span>
                 <span class="topic">Metasploitable</span>
               </div>
-            </div>
+            </article>
 
-            <div class="article-card coming-soon">
+            <article
+              class="article-card coming-soon"
+              data-status="draft"
+              data-category="career-development"
+            >
               <div class="article-header">
                 <div class="article-category">Career Development</div>
                 <div class="article-status" data-status="draft">Draft</div>
@@ -216,7 +275,7 @@
                 to start their cybersecurity career.
               </p>
               <div class="article-meta">
-                <span class="article-date">Expected: Till futher notice</span>
+                <span class="article-date">Expected: Till further notice</span>
                 <span class="article-time">???</span>
               </div>
               <div class="article-topics">
@@ -224,7 +283,7 @@
                 <span class="topic">Certifications</span>
                 <span class="topic">Networking</span>
               </div>
-            </div>
+            </article>
           </div>
 
           <div class="progress-section">
@@ -259,6 +318,23 @@
               </div>
             </div>
           </div>
+
+          <div class="newsletter-section">
+            <div class="newsletter-content">
+              <h3>Stay Updated</h3>
+              <p>Subscribe to get notified when new articles are published.</p>
+              <form class="newsletter-form" id="newsletter-form">
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  required
+                  aria-label="Email address"
+                />
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+              </form>
+              <p class="newsletter-disclaimer">No spam. Unsubscribe anytime.</p>
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -267,13 +343,14 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-info">
-            <p>&copy; 2024 Ibraheem. Aspiring Cybersecurity Professional.</p>
-            <p>Built with passion for security and technology.</p>
+            <p>&copy; 2025 Ibraheem Ademiloye. All rights reserved.</p>
+            <p>Aspiring Cybersecurity Professional.</p>
           </div>
           <div class="social-links">
             <a
               href="https://github.com/IbraheemA50"
               target="_blank"
+              rel="noopener noreferrer"
               aria-label="GitHub"
             >
               <i class="fab fa-github"></i>
@@ -281,6 +358,7 @@
             <a
               href="https://twitter.com/IbraheemA50"
               target="_blank"
+              rel="noopener noreferrer"
               aria-label="Twitter"
             >
               <i class="fab fa-twitter"></i>
@@ -288,6 +366,7 @@
             <a
               href="https://linkedin.com/in/ibraheem"
               target="_blank"
+              rel="noopener noreferrer"
               aria-label="LinkedIn"
             >
               <i class="fab fa-linkedin"></i>
@@ -304,8 +383,256 @@
     </footer>
 
     <script src="../../script.js"></script>
+
     <style>
-      /* Additional styles for published articles */
+      /* Enhanced styles for articles page */
+      .hero-section {
+        padding: 5rem 0 3rem;
+        background: linear-gradient(
+          135deg,
+          var(--background-dark) 0%,
+          var(--background-medium) 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="rgba(0,255,136,0.05)" stroke-width="1"/></svg>');
+        opacity: 0.3;
+        z-index: 0;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        margin-bottom: 2.5rem;
+      }
+
+      .hero-title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      /* Terminal simulation styles - ADJUSTED SIZE */
+      .terminal-simulation {
+        max-width: 700px;
+        height: 500px;
+        margin: 0 auto;
+        background: var(--background-dark);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        position: relative;
+        z-index: 1;
+      }
+
+      .terminal-header {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        background: var(--background-medium);
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .terminal-buttons {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .terminal-buttons .btn {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+
+      .terminal-buttons .btn.close {
+        background: #ff5f56;
+      }
+
+      .terminal-buttons .btn.minimize {
+        background: #ffbd2e;
+      }
+
+      .terminal-buttons .btn.maximize {
+        background: #27c93f;
+      }
+
+      .terminal-title {
+        flex-grow: 1;
+        text-align: center;
+        color: var(--text-secondary);
+        font-family: "Fira Code", monospace;
+        font-size: 0.9rem;
+      }
+
+      .terminal-body {
+        padding: 1rem;
+        font-family: "Fira Code", monospace;
+        color: var(--text-primary);
+        text-align: left;
+        height: calc(100% - 40px);
+        overflow-y: auto;
+      }
+
+      .terminal-line {
+        display: flex;
+        margin-bottom: 0.5rem;
+      }
+
+      .prompt {
+        color: var(--primary-color);
+        margin-right: 0.5rem;
+      }
+
+      .command {
+        flex-grow: 1;
+      }
+
+      .terminal-output {
+        margin-top: 0.5rem;
+        color: var(--text-secondary);
+        white-space: pre-line;
+      }
+
+      /* Content section styles */
+      .content-section {
+        padding: 3rem 0;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+      }
+
+      .section-header h2 {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .section-header p {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* Filter and search styles - ADJUSTED SIZE */
+      .filter-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+        height: 50px;
+      }
+
+      .filter-tabs {
+        display: flex;
+        gap: 0.5rem;
+        height: 100%;
+      }
+
+      .filter-tab {
+        padding: 0.5rem 1rem;
+        background: transparent;
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        color: var(--text-secondary);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      .filter-tab.active {
+        background: var(--primary-color);
+        color: var(--background-dark);
+        border-color: var(--primary-color);
+      }
+
+      .filter-tab:hover:not(.active) {
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+      }
+
+      .search-container {
+        position: relative;
+        width: 250px;
+        height: 100%;
+      }
+
+      .search-container input {
+        width: 100%;
+        height: 100%;
+        padding: 0.5rem 1rem 0.5rem 2.5rem;
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        background: var(--background-medium);
+        color: var(--text-primary);
+      }
+
+      .search-container i {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-secondary);
+      }
+
+      /* Articles grid styles - ADJUSTED SIZE */
+      .articles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+      }
+
+      .article-card {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 1.8rem;
+        transition: all 0.3s ease;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 450px;
+      }
+
+      .article-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 255, 136, 0.15);
+        border-color: var(--primary-color);
+      }
+
       .article-card.published {
         border: 2px solid var(--primary-color);
         background: linear-gradient(
@@ -315,21 +642,139 @@
         );
       }
 
-      .article-card.published .article-status {
+      .article-card.coming-soon {
+        opacity: 0.8;
+        background: repeating-linear-gradient(
+          135deg,
+          var(--background-medium),
+          var(--background-medium) 20px,
+          var(--background-dark) 20px,
+          var(--background-dark) 40px
+        );
+      }
+
+      .article-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.2rem;
+        height: 30px;
+      }
+
+      .article-category {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text-secondary);
+        padding: 0.25rem 0.75rem;
+        background: var(--background-dark);
+        border-radius: 15px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      .article-status {
+        padding: 0.25rem 0.75rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      .article-status[data-status="published"] {
         background: var(--primary-color);
         color: var(--background-dark);
+      }
+
+      .article-status[data-status="in-progress"] {
+        background: rgba(255, 204, 0, 0.2);
+        color: #ffcc00;
+        border: 1px solid #ffcc00;
+      }
+
+      .article-status[data-status="planned"] {
+        background: rgba(0, 122, 255, 0.2);
+        color: #007aff;
+        border: 1px solid #007aff;
+      }
+
+      .article-status[data-status="research"] {
+        background: rgba(175, 82, 222, 0.2);
+        color: #af52de;
+        border: 1px solid #af52de;
+      }
+
+      .article-status[data-status="draft"] {
+        background: rgba(52, 199, 89, 0.2);
+        color: #34c759;
+        border: 1px solid #34c759;
+      }
+
+      .article-card h3 {
+        font-size: 1.5rem;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
         font-weight: 600;
+        line-height: 1.3;
+        height: 60px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+
+      .article-card p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 1.2rem;
+        flex-grow: 1;
+        height: 100px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+      }
+
+      .article-meta {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1.2rem;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        height: 20px;
+      }
+
+      .article-topics {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.2rem;
+        height: 30px;
+        overflow: hidden;
+      }
+
+      .topic {
+        background: var(--background-dark);
+        color: var(--text-secondary);
+        padding: 0.4rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        border: 1px solid var(--border-color);
+        white-space: nowrap;
       }
 
       .article-actions {
-        margin-top: 1rem;
-        padding-top: 1rem;
-        border-top: 1px solid rgba(0, 255, 136, 0.2);
+        margin-top: auto;
+        height: 45px;
       }
 
       .article-actions .btn {
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         gap: 0.5rem;
         padding: 0.75rem 1.5rem;
         background: var(--primary-color);
@@ -338,15 +783,242 @@
         border-radius: 8px;
         font-weight: 600;
         transition: all 0.3s ease;
+        height: 100%;
+        width: 100%;
       }
 
       .article-actions .btn:hover {
         background: #00e07a;
         transform: translateY(-2px);
       }
+
+      /* Progress section styles - ADJUSTED SIZE */
+      .progress-section {
+        margin: 4rem 0;
+        background: var(--background-medium);
+        border-radius: 16px;
+        padding: 2rem;
+        width: 100%;
+      }
+
+      .progress-section h3 {
+        font-size: 1.8rem;
+        color: var(--primary-color);
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .progress-grid {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .progress-item {
+        background: var(--background-dark);
+        border-radius: 8px;
+        padding: 1.2rem;
+        height: 80px;
+      }
+
+      .progress-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.8rem;
+        font-weight: 500;
+        height: 24px;
+      }
+
+      .progress-bar {
+        height: 12px;
+        background: var(--background-medium);
+        border-radius: 6px;
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: var(--gradient-primary);
+        border-radius: 6px;
+        width: 0;
+        transition: width 1.5s ease-in-out;
+      }
+
+      /* Newsletter section styles - ADJUSTED SIZE */
+      .newsletter-section {
+        margin: 4rem 0;
+        background: linear-gradient(
+          135deg,
+          var(--background-medium) 0%,
+          var(--background-dark) 100%
+        );
+        border-radius: 16px;
+        padding: 3rem;
+        text-align: center;
+        width: 100%;
+        height: 280px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .newsletter-content h3 {
+        font-size: 1.8rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .newsletter-content p {
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .newsletter-form {
+        display: flex;
+        max-width: 500px;
+        margin: 0 auto 1rem;
+        gap: 1rem;
+        height: 50px;
+      }
+
+      .newsletter-form input {
+        flex-grow: 1;
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        background: var(--background-medium);
+        color: var(--text-primary);
+        height: 100%;
+      }
+
+      .newsletter-form button {
+        padding: 0.75rem 1.5rem;
+        background: var(--primary-color);
+        color: var(--background-dark);
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        height: 100%;
+        width: 150px;
+      }
+
+      .newsletter-form button:hover {
+        background: #00e07a;
+      }
+
+      .newsletter-disclaimer {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        height: 20px;
+      }
+
+      /* Footer styles - ADJUSTED SIZE */
+      .footer {
+        padding: 3rem 0;
+        background: var(--background-dark);
+        border-top: 1px solid var(--border-color);
+        height: 120px;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+        height: 100%;
+      }
+
+      .footer-info p {
+        margin: 0.25rem 0;
+        color: var(--text-secondary);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        height: 40px;
+      }
+
+      .social-links a {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-secondary);
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background: var(--primary-color);
+        color: var(--background-dark);
+        transform: translateY(-3px);
+      }
+
+      /* Responsive styles */
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2.5rem;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .filter-container {
+          flex-direction: column;
+          height: auto;
+        }
+
+        .filter-tabs {
+          justify-content: center;
+          width: 100%;
+          height: auto;
+        }
+
+        .search-container {
+          width: 100%;
+          height: 50px;
+        }
+
+        .articles-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .article-card {
+          height: auto;
+        }
+
+        .newsletter-form {
+          flex-direction: column;
+          height: auto;
+        }
+
+        .newsletter-form button {
+          width: 100%;
+        }
+
+        .footer {
+          height: auto;
+          padding: 2rem 0;
+        }
+
+        .footer-content {
+          flex-direction: column;
+          text-align: center;
+          height: auto;
+        }
+      }
     </style>
+
     <script>
-      // Articles page specific animations
+      // Articles page specific animations and functionality
       document.addEventListener("DOMContentLoaded", function () {
         // Terminal animation for articles page
         const commands = [
@@ -356,7 +1028,6 @@
           "ls -la published/ drafts/ research/",
           'git log --oneline --grep="article"',
         ];
-
         const outputs = [
           "./articles/network-security-intro.md\n./articles/career-advice.md\n./drafts/owasp-top10.md\n./drafts/aws-security.md\n./research/forensics-guide.md",
           "# Introduction to Network Security\n\nNetwork security is a fundamental aspect...\nIn this comprehensive guide, we'll explore...\n\n## Common Network Threats\n\n1. Man-in-the-Middle Attacks\n2. DDoS Attacks\n3. Packet Sniffing...",
@@ -365,7 +1036,47 @@
           "a1b2c3d Add network security fundamentals\nf4e5d6c Update OWASP research notes\n8g7h9i0 Draft career advice article",
         ];
 
-        animateTerminal("article-command", "article-output", commands, outputs);
+        // Animate terminal
+        let commandIndex = 0;
+        let charIndex = 0;
+        let outputIndex = 0;
+        let isTyping = true;
+        const commandElement = document.getElementById("article-command");
+        const outputElement = document.getElementById("article-output");
+
+        function animateTerminal() {
+          if (isTyping) {
+            if (charIndex < commands[commandIndex].length) {
+              commandElement.textContent +=
+                commands[commandIndex].charAt(charIndex);
+              charIndex++;
+              setTimeout(animateTerminal, 50);
+            } else {
+              isTyping = false;
+              setTimeout(animateTerminal, 1000);
+            }
+          } else {
+            if (outputIndex < outputs[commandIndex].length) {
+              outputElement.textContent +=
+                outputs[commandIndex].charAt(outputIndex);
+              outputIndex++;
+              setTimeout(animateTerminal, 20);
+            } else {
+              // Reset for next command
+              setTimeout(() => {
+                commandIndex = (commandIndex + 1) % commands.length;
+                charIndex = 0;
+                outputIndex = 0;
+                commandElement.textContent = "";
+                outputElement.textContent = "";
+                isTyping = true;
+                animateTerminal();
+              }, 3000);
+            }
+          }
+        }
+
+        animateTerminal();
 
         // Animate progress bars
         setTimeout(() => {
@@ -383,11 +1094,102 @@
           card.addEventListener("mouseenter", function () {
             this.style.transform = "translateY(-5px)";
           });
-
           card.addEventListener("mouseleave", function () {
             this.style.transform = "translateY(0)";
           });
         });
+
+        // Filter functionality
+        const filterTabs = document.querySelectorAll(".filter-tab");
+        const articleCards = document.querySelectorAll(".article-card");
+
+        filterTabs.forEach((tab) => {
+          tab.addEventListener("click", function () {
+            // Update active tab
+            filterTabs.forEach((t) => t.classList.remove("active"));
+            this.classList.add("active");
+
+            const filter = this.getAttribute("data-filter");
+
+            // Filter articles
+            articleCards.forEach((card) => {
+              if (filter === "all") {
+                card.style.display = "flex";
+              } else {
+                const status = card.getAttribute("data-status");
+                if (status === filter) {
+                  card.style.display = "flex";
+                } else {
+                  card.style.display = "none";
+                }
+              }
+            });
+          });
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById("article-search");
+        if (searchInput) {
+          searchInput.addEventListener("input", function () {
+            const searchTerm = this.value.toLowerCase();
+
+            articleCards.forEach((card) => {
+              const title = card.querySelector("h3").textContent.toLowerCase();
+              const description = card
+                .querySelector("p")
+                .textContent.toLowerCase();
+              const topics = Array.from(card.querySelectorAll(".topic"))
+                .map((topic) => topic.textContent.toLowerCase())
+                .join(" ");
+
+              if (
+                title.includes(searchTerm) ||
+                description.includes(searchTerm) ||
+                topics.includes(searchTerm)
+              ) {
+                card.style.display = "flex";
+              } else {
+                card.style.display = "none";
+              }
+            });
+          });
+        }
+
+        // Newsletter form
+        const newsletterForm = document.getElementById("newsletter-form");
+        if (newsletterForm) {
+          newsletterForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+
+            // In a real implementation, you would send this to your backend
+            // For now, just show a success message
+            const successMessage = document.createElement("div");
+            successMessage.className = "newsletter-success";
+            successMessage.textContent = "Thank you for subscribing!";
+            successMessage.style.color = "var(--primary-color)";
+            successMessage.style.marginTop = "1rem";
+
+            // Remove any existing success message
+            const existingMessage = this.parentNode.querySelector(
+              ".newsletter-success"
+            );
+            if (existingMessage) {
+              existingMessage.remove();
+            }
+
+            // Add the success message
+            this.parentNode.appendChild(successMessage);
+
+            // Reset the form
+            this.reset();
+
+            // Remove the success message after 5 seconds
+            setTimeout(() => {
+              successMessage.remove();
+            }, 5000);
+          });
+        }
       });
     </script>
   </body>

