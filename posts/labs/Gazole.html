@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gazole - Lab Writeup | Ibraheem's Portfolio</title>
+    <link rel="stylesheet" href="../../styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="logo">
+          <i class="fas fa-terminal"></i>
+          <span>ibraheemA05@cybersec:~$</span>
+        </div>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="nav" id="nav">
+          <a href="../../index.html" class="nav-link">Home</a>
+          <a href="../tryhackme/index.html" class="nav-link">TryHackMe</a>
+          <a href="../articles/index.html" class="nav-link">Articles</a>
+          <a href="../projects/index.html" class="nav-link">Projects</a>
+          <a href="index.html" class="nav-link active">Labs</a>
+          <a href="../../index.html#contact" class="nav-link">Contact</a>
+        </nav>
+      </header>
+      <main class="main">
+        <section class="writeup-hero">
+          <div class="writeup-hero-content">
+            <div class="breadcrumb">
+              <a href="../../index.html">Home</a>
+              <span>/</span>
+              <a href="index.html">Labs</a>
+              <span>/</span>
+              <span>Gazole</span>
+            </div>
+            <h1 class="writeup-hero-title">
+              <i class="fas fa-gas-pump"></i>
+              Gazole - Lab Writeup
+            </h1>
+            <div class="writeup-meta">
+              <div class="meta-item">
+                <i class="fas fa-calendar"></i>
+                <span>June 10, 2023</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-signal"></i>
+                <span class="difficulty-easy">
+Trivial </span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>~120 minutes</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-tags"></i>
+                <span>Broken Access Control, Database, Information Leakage, Laravel</span>
+              </div>
+            </div>
+            <p class="writeup-description">
+              A security assessment of a petroleum conglomerate's web application. 
+              This lab focuses on identifying broken access control, information leakage, 
+              and database exposure vulnerabilities in a Laravel-based system.
+            </p>
+          </div>
+        </section>
+        <section class="writeup-content">
+          <div class="content-container">
+            <div class="table-of-contents">
+              <h3>Table of Contents</h3>
+              <ul>
+                <li><a href="#overview">Lab Overview</a></li>
+                <li><a href="#scenario">Scenario</a></li>
+                <li><a href="#setup">Initial Setup</a></li>
+                <li><a href="#analysis">Vulnerability Analysis</a></li>
+                <li><a href="#questions">Question Walkthrough</a></li>
+                <li><a href="#takeaways">Key Takeaways</a></li>
+              </ul>
+            </div>
+            <div class="writeup-main">
+              <section id="overview" class="content-section">
+                <h2>
+                  <i class="fas fa-info-circle"></i>
+                  Lab Overview
+                </h2>
+                <div class="info-box">
+                  <p>
+                    The Gazole lab is a security assessment challenge focused on a Laravel-based 
+                    web application for a petroleum conglomerate. As an IT engineer, I identified 
+                    multiple security vulnerabilities including broken access control, information 
+                    leakage, and exposed database management tools.
+                  </p>
+                  <div class="room-stats">
+                    <div class="stat">
+                      <strong>Difficulty:</strong> MEDIUM
+                    </div>
+                    <div class="stat">
+                      <strong>Focus:</strong> Access Control, Information Leakage
+                    </div>
+                    <div class="stat">
+                      <strong>Technology:</strong> Laravel, PHP, MySQL
+                    </div>
+                  </div>
+                </div>
+                <div class="screenshot-box">
+                  <h4><i class="fas fa-gas-pump"></i> Application Interface</h4>
+                  <div class="image-container">
+                    <img src="../../assets/images/labs/gazole/app-interface.png" alt="Gazole application interface" class="writeup-image" />
+                    <p class="image-caption">Gazole petroleum conglomerate web application interface</p>
+                  </div>
+                </div>
+              </section>
+              
+              <section id="scenario" class="content-section">
+                <h2>
+                  <i class="fas fa-exclamation-triangle"></i>
+                  Scenario
+                </h2>
+                <div class="scenario-box">
+                  <h3>⛽ The Petroleum Conglomerate</h3>
+                  <p>
+                    As an IT engineer at Gazole, a petroleum conglomerate, I was tasked with 
+                    assessing the security of their web application. During the investigation, 
+                    I discovered several critical vulnerabilities including unauthorized access 
+                    to sensitive pages and exposed secrets.
+                  </p>
+                  <p>
+                    My mission is to evaluate these risks and report back on their potential 
+                    impact to the company's security posture.
+                  </p>
+                  <div class="mission-objective">
+                    <h4>🎯 Mission Objective:</h4>
+                    <p>
+                      Download and analyze the provided source code, set up the application 
+                      environment, identify security vulnerabilities, and document their impact 
+                      on the organization.
+                    </p>
+                  </div>
+                </div>
+                <div class="warning-box">
+                  <h4>⚠️ Security Note</h4>
+                  <p>
+                    This lab demonstrates common vulnerabilities found in real-world web applications. 
+                    The techniques used here should only be applied in authorized security assessments 
+                    and penetration testing engagements.
+                  </p>
+                </div>
+              </section>
+              
+              <section id="setup" class="content-section">
+                <h2>
+                  <i class="fas fa-cogs"></i>
+                  Initial Setup
+                </h2>
+                <p>
+                  My investigation began with downloading the source code from the artifacts section (source.zip). 
+                  After extracting the files, I attempted to start the PHP web application:
+                </p>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span class="code-title">Starting the Laravel Application</span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                      <i class="fas fa-copy"></i>
+                    </button>
+                  </div>
+                  <pre><code class="language-bash">php artisan serve</code></pre>
+                </div>
+                <div class="explanation-box">
+                  <p>
+                    The server started successfully and provided the URL: <code>http://127.0.0.1:8000</code>. 
+                    However, when I visited the website, I encountered a "500 Internal Server Error".
+                  </p>
+                </div>
+                <h3>🔧 Troubleshooting the Application</h3>
+                <p>
+                  To resolve the error, I needed to properly configure the application environment:
+                </p>
+                <div class="step-list">
+                  <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                      <h4>Database Configuration</h4>
+                      <p>Set up the database and configure the .env file with proper credentials</p>
+                    </div>
+                  </div>
+                  <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                      <h4>Composer Dependencies</h4>
+                      <p>Install required PHP packages using composer install</p>
+                    </div>
+                  </div>
+                  <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                      <h4>Application Key</h4>
+                      <p>Generate a new application key using php artisan key:generate</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="results-box">
+                  <h4>Setup Results:</h4>
+                  <p>
+                    After completing these configuration steps, I restarted the server and successfully 
+                    accessed the application at <code>http://127.0.0.1:8000</code>. The application 
+                    was now fully functional and ready for security assessment.
+                  </p>
+                </div>
+              </section>
+              
+              <section id="analysis" class="content-section">
+                <h2>
+                  <i class="fas fa-search"></i>
+                  Vulnerability Analysis
+                </h2>
+                <p>
+                  With the application running, I began a systematic security assessment focusing on 
+                  access control, information leakage, and other common web vulnerabilities.
+                </p>
+                <div class="screenshot-box">
+                  <h4><i class="fas fa-shield-alt"></i> Security Assessment Approach</h4>
+                  <div class="image-container">
+                    <img src="../../assets/images/labs/gazole/security-assessment.png" alt="Security assessment approach" class="writeup-image" />
+                    <p class="image-caption">Systematic approach to identifying security vulnerabilities</p>
+                  </div>
+                </div>
+                <h3>🔍 Key Areas of Focus</h3>
+                <div class="step-list">
+                  <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                      <h4>Access Control Testing</h4>
+                      <p>Checking for unauthorized access to administrative functions</p>
+                    </div>
+                  </div>
+                  <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                      <h4>Information Leakage</h4>
+                      <p>Looking for exposed sensitive data and configuration files</p>
+                    </div>
+                  </div>
+                  <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                      <h4>Database Exposure</h4>
+                      <p>Identifying exposed database management tools and interfaces</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              
+              <section id="questions" class="content-section">
+                <h2>
+                  <i class="fas fa-question-circle"></i>
+                  Question Walkthrough
+                </h2>
+                
+                <div class="question-block">
+                  <h3>Question 1: Unauthorized Access Risk</h3>
+                  <p><strong>During your assessment, you notice that the application does not require users to authenticate before accessing "/admin/users". What potential risk does this pose?</strong></p>
+                  <div class="screenshot-box">
+                    <h4><i class="fas fa-image"></i> Question Reference</h4>
+                    <div class="image-container">
+                      <img src="../../assets/images/labs/gazole/question1.png" alt="Question 1" class="writeup-image" />
+                      <p class="image-caption">Question about unauthorized access risk</p>
+                    </div>
+                  </div>
+                  <h4>🔍 Risk Analysis</h4>
+                  <p>
+                    The lack of authentication on the "/admin/users" endpoint presents a significant 
+                    security risk. I analyzed the potential consequences:
+                  </p>
+                  <div class="results-box">
+                    <h4>Analysis Results:</h4>
+                    <p>
+                      The correct answer is <strong>A. Unauthorized users may access sensitive information</strong>.
+                    </p>
+                    <p>
+                      Users should be authenticated before accessing any route, and administrative 
+                      routes should be protected and accessible only to authorized administrators. 
+                      Without proper authentication controls, any visitor to the site can potentially 
+                      access sensitive user data and administrative functions.
+                    </p>
+                  </div>
+                  <div class="explanation-box">
+                    <p>
+                      <strong>Security Impact:</strong> This vulnerability could lead to unauthorized 
+                      access to confidential employee information, user data manipulation, and 
+                      potentially full system compromise if administrative functions can be accessed 
+                      without authentication.
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="question-block">
+                  <h3>Question 2: Vulnerability Classification</h3>
+                  <p><strong>The absence of authentication on "/admin/users" is considered:</strong></p>
+                  <h4>🔍 Vulnerability Type</h4>
+                  <p>
+                    I classified this vulnerability based on its characteristics and potential impact:
+                  </p>
+                  <div class="results-box">
+                    <h4>Analysis Results:</h4>
+                    <p>
+                      The correct answer is <strong>B. Broken Access Control</strong>.
+                    </p>
+                    <p>
+                      Broken Access Control is a security vulnerability that allows unauthorized users 
+                      to access, modify, or delete data they should not have access to. In this case, 
+                      the application fails to properly restrict access to administrative functions, 
+                      allowing unauthenticated users to access sensitive user management pages.
+                    </p>
+                  </div>
+                  <div class="explanation-box">
+                    <p>
+                      <strong>Why not other options?</strong>
+                    </p>
+                    <ul>
+                      <li><strong>A. Insecure Direct Object Reference (IDOR):</strong> While related, IDOR specifically 
+                      refers to accessing records by manipulating parameters (like user IDs), which isn't 
+                      the primary issue here.</li>
+                      <li><strong>C. Secure Coding:</strong> This is not a vulnerability but a practice.</li>
+                      <li><strong>D. Privilege Escalation:</strong> This typically involves gaining higher privileges 
+                      than originally assigned, whereas here there's no authentication at all.</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div class="question-block">
+                  <h3>Question 3: Administrator Email Discovery</h3>
+                  <p><strong>By accessing "/admin/users", you discover confidential employees information. What is the email of the administrator?</strong></p>
+                  <h4>🔍 Information Discovery</h4>
+                  <p>
+                    Initially, I was unable to retrieve the confidential employee information from the 
+                    "/admin/users" page. I attempted several methods to extract this information:
+                  </p>
+                  <div class="screenshot-box">
+                    <h4><i class="fas fa-image"></i> Initial Attempt</h4>
+                    <div class="image-container">
+                      <img src="../../assets/images/labs/gazole/question2-1.png" alt="Initial attempt to access user information" class="writeup-image" />
+                      <p class="image-caption">Initial attempt to access user information without success</p>
+                    </div>
+                  </div>
+                  <h4>🛠️ Discovery Methods</h4>
+                  <div class="step-list">
+                    <div class="step">
+                      <div class="step-number">1</div>
+                      <div class="step-content">
+                        <h4>Source Code Review</h4>
+                        <p>Examined the application source code for hardcoded credentials or email addresses</p>
+                      </div>
+                    </div>
+                    <div class="step">
+                      <div class="step-number">2</div>
+                      <div class="step-content">
+                        <h4>Database Examination</h4>
+                        <p>Checked the database for user information but found no relevant data</p>
+                      </div>
+                    </div>
+                    <div class="step">
+                      <div class="step-number">3</div>
+                      <div class="step-content">
+                        <h4>Grep Command</h4>
+                        <p>Used grep to search for email patterns in the source code</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">Using Grep to Find Email Information</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                      </button>
+                    </div>
+                    <pre><code class="language-bash">grep -rni ".sec-dojo.com"</code></pre>
+                  </div>
+                  <div class="explanation-box">
+                    <p>
+                      The grep command searches for the pattern ".sec-dojo.com" recursively in all files 
+                      within the source directory. This command helped me locate the administrator's 
+                      email address that was hardcoded somewhere in the application.
+                    </p>
+                  </div>
+                  <div class="screenshot-box">
+                    <h4><i class="fas fa-image"></i> Successful Discovery</h4>
+                    <div class="image-container">
+
+                      <img src="../../assets/images/labs/gazole/question2-2.png" alt="Successfully discovered administrator information" class="writeup-image" />
+                      <p class="image-caption">Successfully discovered confidential employee information</p>
+                    </div>
+                  </div>
+                  <div class="explanation-box">
+                    <p>
+                      <strong>Note:</strong> During the writeup process, I restarted the PHP server and 
+                      was able to access the confidential information on the dashboard. This suggests 
+                      there might have been an initial configuration issue with the server setup.
+                    </p>
+                  </div>
+                  <div class="results-box">
+                    <h4>Analysis Results:</h4>
+                    <p>
+                      Using the grep command, I successfully discovered the administrator's email 
+                      address within the application source code. This demonstrates how information 
+                      leakage can occur through hardcoded credentials or contact information.
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="question-block">
+                  <h3>Question 4: Available User Roles</h3>
+                  <p><strong>By accessing "/admin/users/create", you discover a form for user creation. Which roles are available for user creation?</strong></p>
+                  <div class="screenshot-box">
+                    <h4><i class="fas fa-image"></i> Question Reference</h4>
+                    <div class="image-container">
+                      <img src="../../assets/images/labs/gazole/question3.png" alt="Question about user roles" class="writeup-image" />
+                      <p class="image-caption">Question about available user roles</p>
+                    </div>
+                  </div>
+                  <h4>🔍 Role Analysis</h4>
+                  <p>
+                    I accessed the user creation form at "/admin/users/create" to examine the available 
+                    roles in the application:
+                  </p>
+                  <div class="screenshot-box">
+                    <h4><i class="fas fa-image"></i> User Creation Form</h4>
+                    <div class="image-container">
+                      <img src="../../assets/images/labs/gazole/question3-1.png" alt="User creation form showing available roles" class="writeup-image" />
+                      <p class="image-caption">User creation form showing available roles</p>
+                    </div>
+                  </div>
+                  <div class="results-box">
+                    <h4>Analysis Results:</h4>
+                    <p>
+                      The available roles for user creation are:
+                      <br>• <strong>User</strong>
+                      <br>• <strong>Staff</strong>
+                    </p>
+                    <p>
+                      Interestingly, the "Admin" role is not available for selection in the user creation 
+                      form, which might be a security measure to prevent unauthorized creation of 
+                      administrative accounts.
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="question-block">
+                  <h3>Question 5: Input Validation Vulnerability</h3>
+                  <p><strong>While reviewing the source code, you find that the application accepts user input for updating profiles "/admin/users/create" without validation. Which vulnerability does this represent?</strong></p>
+                  <h4>🔍 Vulnerability Identification</h4>
+                  <p>
+                    I examined the user creation functionality and identified a critical vulnerability 
+                    related to input handling:
+                  </p>
+                  <div class="results-box">
+                    <h4>Analysis Results:</h4>
+                    <p>
+                      The correct answer is <strong>D. Mass Assignment Vulnerability</strong>.
+                    </p>
+                    <p>
+                      The application accepts user input for creating user profiles without proper 
+                      validation or filtering. This creates a Mass Assignment vulnerability where an 
+                      attacker could potentially manipulate form data to assign unauthorized privileges 
+                      or modify fields they shouldn't have access to.
+                    </p>
+                  </div>
+                  <div class="explanation-box">
+                    <p>
+                      <strong>How Mass Assignment Works:</strong>
+                    </p>
+                    <p>
+                      When the application blindly accepts all form fields and assigns them to model 
+                      attributes without proper filtering, an attacker can add additional parameters 
+                      to the request (e.g., via browser developer tools) that might not be intended 
+                      to be user-modifiable, such as role assignments or status flags.
+                    </p>
+                    <p>
+                      In this case, while the "Admin" role isn't available in the form UI, a malicious 
+                      user could potentially modify the request to include this role if the backend 
+                      doesn't properly validate or filter input.
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="question-block">
+                  <h3>Question 6: Contact Form Error</h3>
+                  <p><strong>By accessing the contact form (http://..../contact-us) and submitting a message, you notice that the form is broken and displays an error message. What is the error message?</strong></p>
+                  <div class="screenshot-box">
+                    <h4><i class="fas fa-image"></i> Question Reference</h4>
+                    <div class="image-container">
+                      <img src="../../assets/images/labs/gazole/question4.png" alt="Question about contact form error" class="writeup-image" />
+                      <p class="image-caption">Question about contact form error message</p>
+                    </div>
+                  </div>
+                  <h4>🔍 Error Analysis</h4>
+                  <p>
+                    I tested the contact form by filling out the details and clicking the send button:
+                  </p>
+                  <div class="screenshot-box">
+                    <h4><i class="fas fa-image"></i> Contact Form Error</h4>
+                    <div class="image-container">
+                      <img src="../../assets/images/labs/gazole/question4-1.png" alt="Contact form showing error message" class="writeup-image" />
+                      <p class="image-caption">Contact form showing error message</p>
+                    </div>
+                  </div>
+                  <div class="results-box">
+                    <h4>Analysis Results:</h4>
+                    <p>
+                      After submitting the contact form, the application displayed an error message: 
+                      <strong>"MailHog service is unreachable"</strong>.
+                    </p>
+                    <p>
+                      This indicates that the application is configured to use MailHog (an email 
+                      testing tool) for handling form submissions, but the service is not running 
+                      or not properly configured. This error could potentially leak information 
+                      about the application's email configuration and internal services.
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="question-block">
+                  <h3>Question 7: Database Management Tool</h3>
+                  <p><strong>A database management tool is exposed at (http://..../db.php). What is the name of the tool?</strong></p>
+                  <div class="screenshot-box">
+                    <h4><i class="fas fa-image"></i> Question Reference</h4>
+                    <div class="image-container">
+                      <img src="../../assets/images/labs/gazole/question15.png" alt="Question about database management tool" class="writeup-image" />
+                      <p class="image-caption">Question about database management tool</p>
+                    </div>
+                  </div>
+                  <h4>🔍 Tool Identification</h4>
+                  <p>
+                    I attempted to identify the database management tool through multiple approaches:
+                  </p>
+                  <div class="step-list">
+                    <div class="step">
+                      <div class="step-number">1</div>
+                      <div class="step-content">
+                        <h4>Source Code Review</h4>
+                        <p>Examined the db.php file but found no identifying information</p>
+                      </div>
+                    </div>
+                    <div class="step">
+                      <div class="step-number">2</div>
+                      <div class="step-content">
+                        <h4>Direct Access</h4>
+                        <p>Attempted to access the tool directly but couldn't identify it visually</p>
+                      </div>
+                    </div>
+                    <div class="step">
+                      <div class="step-number">3</div>
+                      <div class="step-content">
+                        <h4>Curl and Grep</h4>
+                        <p>Used curl combined with grep to extract tool information from the webpage</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="code-block">
+                    <div class="code-header">
+                      <span class="code-title">Using Curl and Grep to Identify the Tool</span>
+                      <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                      </button>
+                    </div>
+                    <pre><code class="language-bash">curl -s http://127.0.0.1:8000/db.php | grep -i "adminer\|phpmyadmin"</code></pre>
+                  </div>
+                  <div class="screenshot-box">
+                    <h4><i class="fas fa-image"></i> Tool Identification Process</h4>
+                    <div class="image-container">
+                      <img src="../../assets/images/labs/gazole/question15-1.png" alt="Using curl and grep to identify the database tool" class="writeup-image" />
+                      <p class="image-caption">Using curl and grep to identify the database management tool</p>
+                    </div>
+                  </div>
+                  <div class="results-box">
+                    <h4>Analysis Results:</h4>
+                    <p>
+                      Using curl combined with grep, I successfully identified the database management 
+                      tool as <strong>Adminer</strong>.
+                    </p>
+                    <p>
+                      Adminer is a popular database management tool written in PHP. Its exposure 
+                      presents a significant security risk as it could allow unauthorized access 
+                      to the application's database.
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="question-block">
+                  <h3>Question 8: Database Tool Risk</h3>
+                  <p><strong>What is the risk of an exposed database management tool?</strong></p>
+                  <h4>🔍 Risk Assessment</h4>
+                  <p>
+                    I evaluated the potential risks associated with the exposed Adminer database 
+                    management tool:
+                  </p>
+                  <div class="results-box">
+                    <h4>Analysis Results:</h4>
+                    <p>
+                      The correct answer is <strong>A. Unauthorized access to sensitive data</strong>.
+                    </p>
+                    <p>
+                      When a database management tool is exposed, the primary and most severe risk 
+                      is that an attacker could gain access to the tool and view or extract sensitive 
+                      data. This could include customer information, financial records, intellectual 
+                      property, and other confidential business data.
+                    </p>
+                  </div>
+                  <div class="explanation-box">
+                    <p>
+                      <strong>Additional Risks:</strong>
+                    </p>
+                    <ul>
+                      <li><strong>Data Manipulation:</strong> Attackers could modify or delete data, potentially 
+                      causing business disruption or data loss.</li>
+                      <li><strong>Privilege Escalation:</strong> If user credentials are stored in the database, 
+                      attackers could potentially escalate privileges within the application.</li>
+                      <li><strong>Further Compromise:</strong> Database access could lead to further system 
+                      compromise through techniques like reading application configuration files 
+                      or executing stored procedures.</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div class="success-box">
+                  <h4>🎉 Lab Completed!</h4>
+                  <p>
+                    Through systematic analysis of the Gazole application, I successfully identified 
+                    and documented multiple security vulnerabilities including broken access control, 
+                    information leakage, mass assignment vulnerabilities, and exposed database 
+                    management tools.
+                  </p>
+                </div>
+              </section>
+              
+              <section id="takeaways" class="content-section">
+                <h2>
+                  <i class="fas fa-lightbulb"></i>
+                  Key Takeaways
+                </h2>
+                <div class="takeaways-grid">
+                  <div class="takeaway-card">
+                    <h4>🔒 Access Control Essentials</h4>
+                    <p>
+                      Always implement proper authentication and authorization controls, especially 
+                      for administrative functions. Never assume that users won't discover 
+                      unprotected endpoints.
+                    </p>
+                  </div>
+                  <div class="takeaway-card">
+                    <h4>🛡️ Input Validation</h4>
+                    <p>
+                      Validate and sanitize all user input to prevent mass assignment vulnerabilities 
+                      and other injection attacks. Use allowlists rather than blocklists for validation.
+                    </p>
+                  </div>
+                  <div class="takeaway-card">
+                    <h4>🔍 Information Leakage</h4>
+                    <p>
+                      Avoid hardcoding sensitive information in source code. Use environment variables 
+                      or secure configuration management systems for credentials and contact information.
+                    </p>
+                  </div>
+                  <div class="takeaway-card">
+                    <h4>🗄️ Database Security</h4>
+                    <p>
+                      Never expose database management tools in production environments. If such tools 
+                      are needed for development, ensure they are properly secured and inaccessible 
+                      from external networks.
+                    </p>
+                  </div>
+                </div>
+                <div class="learning-resources">
+                  <h3>Additional Learning Resources</h3>
+                  <ul>
+                    <li><a href="https://laravel.com/docs/security" target="_blank">Laravel Security Documentation</a></li>
+                    <li><a href="https://owasp.org/www-project-top-ten/" target="_blank">OWASP Top 10</a></li>
+                    <li><a href="https://owasp.org/www-project-access-control/" target="_blank">OWASP Access Control Cheat Sheet</a></li>
+                    <li><a href="https://portswigger.net/web-security/access-control" target="_blank">Access Control Testing Guide</a></li>
+                  </ul>
+                </div>
+                <div class="methodology-summary">
+                  <h3>🎯 Assessment Methodology Applied</h3>
+                  <div class="methodology-steps">
+                    <div class="method-step completed">
+                      <div class="step-number">✓</div>
+                      <div class="step-content">
+                        <h4>Environment Setup</h4>
+                        <p>Properly configured the Laravel application environment for testing</p>
+                      </div>
+                    </div>
+                    <div class="method-step completed">
+                      <div class="step-number">✓</div>
+                      <div class="step-content">
+                        <h4>Access Control Testing</h4>
+                        <p>Identified and exploited broken access control vulnerabilities</p>
+                      </div>
+                    </div>
+                    <div class="method-step completed">
+                      <div class="step-number">✓</div>
+                      <div class="step-content">
+                        <h4>Information Discovery</h4>
+                        <p>Used various techniques to uncover leaked sensitive information</p>
+                      </div>
+                    </div>
+                    <div class="method-step completed">
+                      <div class="step-number">✓</div>
+                      <div class="step-content">
+                        <h4>Input Validation Analysis</h4>
+                        <p>Identified mass assignment vulnerabilities in user creation forms</p>
+                      </div>
+                    </div>
+                    <div class="method-step completed">
+                      <div class="step-number">✓</div>
+                      <div class="step-content">
+                        <h4>Database Exposure Assessment</h4>
+                        <p>Discovered and evaluated risks of exposed database management tools</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+        <section class="writeup-navigation">
+          <div class="nav-container">
+            <a href="index.html" class="nav-btn prev">
+              <i class="fas fa-arrow-left"></i>
+              Back to Labs
+            </a>
+            <div class="nav-info">
+              <span>Lab Completed</span>
+              <div class="completion-badge">
+                <i class="fas fa-check-circle"></i>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Get In Touch</h3>
+            <p>
+              Let's connect and discuss cybersecurity, cloud engineering, or
+              potential collaborations!
+            </p>
+          </div>
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="../projects/index.html">Projects</a></li>
+              <li><a href="../tryhackme/index.html">TryHackMe</a></li>
+              <li><a href="../articles/index.html">Articles</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Connect</h3>
+            <div class="footer-social">
+              <a href="https://x.com/IbraheemA50" target="_blank"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/ademiloye-al-hanif-ibraheem-4b5a3027a/"
+                target="_blank"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a href="mailto:ademiloyealhanifibraheem@gmail.com"
+                ><i class="fas fa-envelope"></i
+              ></a>
+              <a href="https://github.com/IbraheemA05" target="_blank"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Ibraheem Ademiloye. All rights reserved.</p>
+          <p class="footer-motto">Defensive By Offensive!</p>
+        </div>
+      </footer>
+    </div>
+    <style>
+      /* Writeup-specific styles */
+      .writeup-hero {
+        padding: 6rem 2rem 4rem;
+        background: var(--gradient-dark);
+        text-align: center;
+      }
+      .writeup-hero-content {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .breadcrumb {
+        margin-bottom: 2rem;
+        color: var(--text-secondary);
+      }
+      .breadcrumb a {
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+      .breadcrumb span {
+        margin: 0 0.5rem;
+      }
+      .writeup-hero-title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .writeup-meta {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-secondary);
+        background: var(--background-medium);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        border: 1px solid var(--border-color);
+      }
+      .difficulty-easy {
+        color: var(--primary-color) !important;
+        font-weight: 600;
+      }
+      .writeup-description {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .writeup-content {
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .content-container {
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        gap: 3rem;
+      }
+      .table-of-contents {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem;
+        height: fit-content;
+        position: sticky;
+        top: 2rem;
+      }
+      .table-of-contents h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+      .table-of-contents ul {
+        list-style: none;
+      }
+      .table-of-contents li {
+        margin-bottom: 0.5rem;
+      }
+      .table-of-contents a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      .table-of-contents a:hover {
+        color: var(--primary-color);
+      }
+      .content-section {
+        margin-bottom: 4rem;
+      }
+      .content-section h2 {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding-bottom: 0.5rem;
+      }
+      .content-section h3 {
+        font-size: 1.5rem;
+        color: var(--text-primary);
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+      .info-box {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem;
+        margin: 1.5rem 0;
+      }
+      .room-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      .stat {
+        background: var(--background-dark);
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+      }
+      .code-block {
+        background: var(--background-dark);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        margin: 1.5rem 0;
+        overflow: hidden;
+      }
+      .code-header {
+        background: var(--background-medium);
+        padding: 1rem;
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .code-title {
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+      .copy-btn {
+        background: var(--primary-color);
+        color: var(--background-dark);
+        border: none;
+        padding: 0.5rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+      .copy-btn:hover {
+        background: var(--text-primary);
+      }
+      .code-block pre {
+        padding: 1.5rem;
+        margin: 0;
+        font-family: 'Fira Code', monospace;
+        color: var(--primary-color);
+        overflow-x: auto;
+      }
+      .results-box, .discovery-box {
+        background: var(--background-medium);
+        border-left: 4px solid var(--primary-color);
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 0 8px 8px 0;
+      }
+      .step-list {
+        margin: 1.5rem 0;
+      }
+      .step {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        background: var(--background-medium);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+      }
+      .step-number {
+        width: 40px;
+        height: 40px;
+        background: var(--gradient-primary);
+        color: var(--background-dark);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        flex-shrink: 0;
+      }
+      .takeaways-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+      .takeaway-card {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem;
+        transition: all 0.3s ease;
+      }
+      .takeaway-card:hover {
+        transform: translateY(-2px);
+        border-color: var(--primary-color);
+      }
+      .takeaway-card h4 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+      .learning-resources {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-top: 3rem;
+      }
+      .learning-resources h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+      .learning-resources ul {
+        list-style: none;
+      }
+      .learning-resources li {
+        margin-bottom: 0.5rem;
+      }
+      .learning-resources a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      .learning-resources a:hover {
+        color: var(--primary-color);
+      }
+      .writeup-navigation {
+        background: var(--background-medium);
+        border-top: 1px solid var(--border-color);
+        padding: 2rem;
+      }
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .nav-btn {
+        background: var(--primary-color);
+        color: var(--background-dark);
+        padding: 0.75rem 1.5rem;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+      }
+      .nav-btn:hover {
+        background: var(--text-primary);
+        transform: translateX(-3px);
+      }
+      .nav-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: var(--text-secondary);
+      }
+      .completion-badge {
+        background: var(--primary-color);
+        color: var(--background-dark);
+        padding: 0.5rem;
+        border-radius: 50%;
+      }
+      /* Scenario and warning boxes */
+      .scenario-box {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem;
+        margin: 1.5rem 0;
+      }
+      .mission-objective {
+        background: var(--background-dark);
+        border-left: 4px solid var(--primary-color);
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 0 8px 8px 0;
+      }
+      .warning-box {
+        background: rgba(255, 107, 53, 0.1);
+        border: 1px solid var(--accent-color);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+      }
+      .warning-box h4 {
+        color: var(--accent-color);
+        margin-bottom: 1rem;
+      }
+      /* Question blocks */
+      .question-block {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem;
+        margin: 2rem 0;
+      }
+      .question-block h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+      }
+      .explanation-box {
+        background: var(--background-dark);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 1rem 0;
+        font-style: italic;
+        color: var(--text-secondary);
+      }
+      .success-box {
+        background: rgba(0, 255, 136, 0.1);
+        border: 1px solid var(--primary-color);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+      }
+      .success-box h4 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+      /* Methodology summary */
+      .methodology-summary {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-top: 3rem;
+      }
+      .methodology-summary h3 {
+        color: var(--primary-color);
+        margin-bottom: 2rem;
+        text-align: center;
+        border-bottom: none;
+      }
+      .method-step.completed .step-number {
+        background: var(--primary-color);
+        color: var(--background-dark);
+      }
+      /* Image styling for writeups */
+      .writeup-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        margin: 1.5rem 0;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+      }
+      .writeup-image:hover {
+        transform: scale(1.02);
+        box-shadow: 0 8px 25px rgba(0, 255, 136, 0.1);
+      }
+      .image-container {
+        text-align: center;
+        margin: 2rem 0;
+      }
+      .image-caption {
+        font-style: italic;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+      }
+      .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+      .screenshot-box {
+        background: var(--background-medium);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+      }
+      .screenshot-box h4 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .writeup-hero-title {
+          font-size: 2rem;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+        .writeup-meta {
+          flex-direction: column;
+          align-items: center;
+        }
+        .content-container {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        .table-of-contents {
+          position: static;
+          order: -1;
+        }
+        .takeaways-grid {
+          grid-template-columns: 1fr;
+        }
+        .nav-container {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+      }
+    </style>
+    <script src="../../script.js"></script>
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.closest('.code-block').querySelector('code');
+        const text = codeBlock.textContent;
+        
+        navigator.clipboard.writeText(text).then(() => {
+          button.innerHTML = '<i class="fas fa-check"></i>';
+          setTimeout(() => {
+            button.innerHTML = '<i class="fas fa-copy"></i>';
+          }, 2000);
+        });
+      }
+      // Smooth scrolling for table of contents
+      document.querySelectorAll('.table-of-contents a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
