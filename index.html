@@ -3,7 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ibraheem's Cybersecurity Portfolio</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>Ibraheem Ademiloye | Cybersecurity Portfolio - AppSec & Cloud Security</title>
+    <meta name="title" content="Ibraheem Ademiloye | Cybersecurity Portfolio">
+    <meta name="description" content="Cybersecurity portfolio showcasing AppSec, Offensive Security, Cloud Security projects, TryHackMe writeups, and security research by Ibraheem Ademiloye.">
+    <meta name="keywords" content="cybersecurity, appsec, cloud security, penetration testing, devsecops, azure, aws, offensive security, ibraheem ademiloye">
+    <meta name="author" content="Ibraheem Ademiloye">
+
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#00ff88">
+    <meta name="msapplication-TileColor" content="#00ff88">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ibraheema05.github.io/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -15,19 +34,30 @@
     />
   </head>
   <body>
+    <!-- Skip Navigation for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Page Loader -->
+    <div class="page-loader">
+      <div class="loader-animation">
+        <i class="fas fa-terminal"></i>
+        <p>Loading...</p>
+      </div>
+    </div>
+    
     <div class="container">
-      <header class="header">
+      <header class="header" role="banner">
         <div class="logo">
-          <i class="fas fa-terminal"></i>
+          <i class="fas fa-terminal" aria-hidden="true"></i>
           <span>ibraheemA05@cybersec:~$</span>
         </div>
-        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
           <span></span>
           <span></span>
           <span></span>
         </button>
-        <nav class="nav" id="nav">
-          <a href="index.html" class="nav-link active">Home</a>
+        <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+          <a href="index.html" class="nav-link active" aria-current="page">Home</a>
           <a href="posts/tryhackme/index.html" class="nav-link">TryHackMe</a>
           <a href="posts/articles/index.html" class="nav-link">Articles</a>
           <a href="posts/projects/index.html" class="nav-link">Projects</a>
@@ -36,17 +66,15 @@
         </nav>
       </header>
 
-      <main class="main">
+      <main class="main" role="main" id="main-content">
         <section class="hero">
           <div class="hero-content">
             <h1 class="hero-title">Welcome to My Cybersecurity Portfolio</h1>
             <div class="typewriter">
               <p class="hero-description">
-                Hi, I'm <span class="highlight">Ibraheem</span>, 19 years old.
-                I'm passionate about cybersecurity, Appsec (API), Offensive
-                Security, Cloud Security engineering, DevSecOps, and Azure. I
-                continuously learn and grow in the field, exploring new
-                challenges and opportunities.
+                Hi, I'm <span class="highlight">Ibraheem</span> 👋<br><br>
+                <strong>20-year-old Cybersecurity Enthusiast</strong> specializing in AppSec, Cloud Security, and Offensive Security.<br><br>
+                I turn security vulnerabilities into learning opportunities and share my journey through detailed writeups, hands-on projects, and real-world implementations.
               </p>
             </div>
 
@@ -54,24 +82,29 @@
               <a
                 href="https://www.linkedin.com/in/ademiloye-al-hanif-ibraheem-4b5a3027a/"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="social-link"
+                aria-label="Visit my LinkedIn profile (opens in new tab)"
               >
-                <i class="fab fa-linkedin"></i>
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
                 <span>LinkedIn</span>
               </a>
               <a
                 href="https://x.com/IbraheemA50"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="social-link"
+                aria-label="Follow me on Twitter/X (opens in new tab)"
               >
-                <i class="fab fa-twitter"></i>
+                <i class="fab fa-twitter" aria-hidden="true"></i>
                 <span>Twitter/X</span>
               </a>
               <a
-                href="mailto:ademiloyealhanifibraheem@gmail.com"
+                href="mailto:binfin.binfin@gmail.com"
                 class="social-link"
+                aria-label="Send me an email"
               >
-                <i class="fas fa-envelope"></i>
+                <i class="fas fa-envelope" aria-hidden="true"></i>
                 <span>Email</span>
               </a>
             </div>
@@ -114,9 +147,9 @@
           </div>
         </section>
 
-        <section class="about-section">
-          <h2 class="section-title">
-            <i class="fas fa-user-shield"></i>
+        <section class="about-section" aria-labelledby="about-title">
+          <h2 class="section-title" id="about-title">
+            <i class="fas fa-user-shield" aria-hidden="true"></i>
             About Me
           </h2>
           <div class="about-content">
@@ -128,9 +161,9 @@
           </div>
         </section>
 
-        <section class="featured-content">
-          <h2 class="section-title">
-            <i class="fas fa-star"></i>
+        <section class="featured-content" aria-labelledby="featured-title">
+          <h2 class="section-title" id="featured-title">
+            <i class="fas fa-star" aria-hidden="true"></i>
             Featured Content
           </h2>
 
@@ -197,31 +230,45 @@
           </div>
         </section>
 
-        <section class="stats-section">
-          <h2 class="section-title">
-            <i class="fas fa-chart-line"></i>
+        <section class="stats-section" aria-labelledby="stats-title">
+          <h2 class="section-title" id="stats-title">
+            <i class="fas fa-chart-line" aria-hidden="true"></i>
             Portfolio Stats
           </h2>
           <div class="stats-grid">
             <div class="stat-card">
-              <div class="stat-number">3</div>
-              <div class="stat-label">Active Projects</div>
+              <div class="stat-number" data-target="3">0</div>
+              <div class="stat-label">Live Projects</div>
             </div>
             <div class="stat-card">
-              <div class="stat-number">1</div>
-              <div class="stat-label">TryHackMe Writeups</div>
+              <div class="stat-number" data-target="15">0</div>
+              <div class="stat-label">TryHackMe Rooms</div>
             </div>
             <div class="stat-card">
-              <div class="stat-number">2</div>
-              <div class="stat-label">Lab writeups</div>
+              <div class="stat-number" data-target="2">0</div>
+              <div class="stat-label">Lab Writeups</div>
             </div>
             <div class="stat-card">
-              <div class="stat-number">1</div>
-              <div class="stat-label">Articles Published</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">1</div>
+              <div class="stat-number" data-target="1">0</div>
               <div class="stat-label">Security Audits</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section" aria-labelledby="cta-title">
+          <div class="cta-content">
+            <h2 id="cta-title">Interested in Working Together?</h2>
+            <p>I'm always open to discussing new projects, opportunities, or collaborations in cybersecurity.</p>
+            <div class="cta-buttons">
+              <a href="mailto:binfin.binfin@gmail.com" class="btn btn-primary" aria-label="Send me an email">
+                <i class="fas fa-envelope" aria-hidden="true"></i>
+                Get in Touch
+              </a>
+              <a href="https://github.com/IbraheemA05" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" aria-label="View my GitHub profile (opens in new tab)">
+                <i class="fab fa-github" aria-hidden="true"></i>
+                View GitHub
+              </a>
             </div>
           </div>
         </section>
@@ -257,7 +304,7 @@
                 target="_blank"
                 ><i class="fab fa-linkedin"></i
               ></a>
-              <a href="mailto:ademiloyealhanifibraheem@gmail.com"
+              <a href="mailto:binfin.binfin@gmail.com"
                 ><i class="fas fa-envelope"></i
               ></a>
               <a href="https://github.com/IbraheemA05" target="_blank"
@@ -273,6 +320,11 @@
         </div>
       </footer>
     </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+      <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
 
     <script src="script.js"></script>
   </body>

@@ -1,13 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Primary Meta Tags -->
+    <title>Articles | Ibraheem Ademiloye - Cybersecurity Insights</title>
+    <meta name="title" content="Articles | Ibraheem Ademiloye - Cybersecurity Insights" />
     <meta
       name="description"
-      content="Cybersecurity articles and tutorials by IbraheemA05. Sharing knowledge, insights, and experiences in the field of cybersecurity."
+      content="Cybersecurity articles, research, and tutorials by Ibraheem Ademiloye. Exploring AppSec, Cloud Security, and Offensive Security."
     />
-    <title>Articles - Ibraheem's Cybersecurity Blog</title>
+    <meta name="keywords" content="cybersecurity, appsec, cloud security, penetration testing, writeups, tutorials, ibraheem ademiloye" />
+    <meta name="author" content="Ibraheem Ademiloye" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ibraheema05.github.io/posts/articles/" />
+    <meta property="og:title" content="Articles | Ibraheem Ademiloye - Cybersecurity Insights" />
+    <meta property="og:description" content="Cybersecurity articles, research, and tutorials by Ibraheem Ademiloye." />
+    <meta property="og:image" content="https://ibraheema05.github.io/assets/og-image.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://ibraheema05.github.io/posts/articles/" />
+    <meta property="twitter:title" content="Articles | Ibraheem Ademiloye - Cybersecurity Insights" />
+    <meta property="twitter:description" content="Cybersecurity articles, research, and tutorials by Ibraheem Ademiloye." />
+    <meta property="twitter:image" content="https://ibraheema05.github.io/assets/twitter-image.png" />
+    <meta name="twitter:creator" content="@IbraheemA50" />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#00ff88" />
+    <meta name="msapplication-TileColor" content="#00ff88" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ibraheema05.github.io/posts/articles/" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../favicon.png" />
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="../../styles.css" />
     <link
       rel="stylesheet"
@@ -19,9 +49,20 @@
     />
   </head>
   <body>
-    <header class="header">
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Page Loader -->
+    <div class="page-loader">
+      <div class="loader-animation">
+        <i class="fas fa-terminal" aria-hidden="true"></i>
+        <p>Loading System Articles...</p>
+      </div>
+    </div>
+
+    <header class="header" role="banner">
       <div class="logo">
-        <i class="fas fa-terminal"></i>
+        <i class="fas fa-terminal" aria-hidden="true"></i>
         <span>ibraheemA05@cybersec:~$</span>
       </div>
       <button
@@ -34,22 +75,18 @@
         <span></span>
         <span></span>
       </button>
-      <nav class="nav" id="nav" aria-label="Main navigation">
+      <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
         <a href="../../index.html" class="nav-link">Home</a>
         <a href="../tryhackme/index.html" class="nav-link">TryHackMe</a>
-        <a href="index.html" class="nav-link active" aria-current="page"
-          >Articles</a
-        >
+        <a href="index.html" class="nav-link active" aria-current="page">Articles</a>
         <a href="../projects/index.html" class="nav-link">Projects</a>
         <a href="../labs/index.html" class="nav-link">Labs</a>
-        <a href="mailto:ademiloyealhanifibraheem@gmail.com" class="nav-link"
-          >Contact</a
-        >
+        <a href="../../index.html#contact" class="nav-link">Contact</a>
       </nav>
     </header>
 
-    <main class="main-content">
-      <section class="hero-section articles-hero">
+    <main class="main-content" id="main-content">
+      <section class="hero-section articles-hero" style="padding-bottom: 2rem;">
         <div class="container">
           <div class="hero-content">
             <h1 class="hero-title">
@@ -339,48 +376,59 @@
       </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
       <div class="container">
         <div class="footer-content">
-          <div class="footer-info">
-            <p>&copy; 2025 Ibraheem Ademiloye. All rights reserved.</p>
-            <p>Aspiring Cybersecurity Professional.</p>
+          <div class="footer-section">
+            <h3>Get In Touch</h3>
+            <p>
+              Let's connect and discuss cybersecurity, cloud engineering, or
+              potential collaborations!
+            </p>
           </div>
-          <div class="social-links">
-            <a
-              href="https://github.com/IbraheemA50"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-            >
-              <i class="fab fa-github"></i>
-            </a>
-            <a
-              href="https://twitter.com/IbraheemA50"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Twitter"
-            >
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a
-              href="https://linkedin.com/in/ibraheem"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-            >
-              <i class="fab fa-linkedin"></i>
-            </a>
-            <a
-              href="mailto:ademiloyealhanifibraheem@gmail.com"
-              aria-label="Email"
-            >
-              <i class="fas fa-envelope"></i>
-            </a>
+
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="../projects/index.html">Projects</a></li>
+              <li><a href="../tryhackme/index.html">TryHackMe</a></li>
+              <li><a href="index.html">Articles</a></li>
+            </ul>
           </div>
+
+          <div class="footer-section">
+            <h3>Connect</h3>
+            <div class="footer-social">
+              <a href="https://x.com/IbraheemA50" target="_blank" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/ademiloye-al-hanif-ibraheem-4b5a3027a/"
+                target="_blank"
+                aria-label="LinkedIn"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a href="mailto:binfin.binfin@gmail.com" aria-label="Email"
+                ><i class="fas fa-envelope"></i
+              ></a>
+              <a href="https://github.com/IbraheemA05" target="_blank" aria-label="GitHub"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 IbraheemA05. All rights reserved.</p>
+          <p class="footer-motto">Defensive By Offensive!</p>
         </div>
       </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+      <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
 
     <script src="../../script.js"></script>
 
@@ -437,10 +485,10 @@
         margin: 0 auto;
       }
 
-      /* Terminal simulation styles - ADJUSTED SIZE */
+      /* Terminal simulation styles - FIXED SIZE */
       .terminal-simulation {
-        max-width: 700px;
-        height: 500px;
+        max-width: 900px;
+        min-height: 350px;
         margin: 0 auto;
         background: var(--background-dark);
         border-radius: 8px;
@@ -541,35 +589,37 @@
         margin: 0 auto;
       }
 
-      /* Filter and search styles - ADJUSTED SIZE */
+      /* Filter and search styles - IMPROVED LAYOUT */
       .filter-container {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
         flex-wrap: wrap;
-        gap: 1rem;
-        height: 50px;
+        gap: 1.5rem;
+        padding: 1rem;
+        background: var(--background-medium);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
       }
 
       .filter-tabs {
         display: flex;
-        gap: 0.5rem;
-        height: 100%;
+        gap: 0.75rem;
+        flex-wrap: wrap;
       }
 
       .filter-tab {
-        padding: 0.5rem 1rem;
+        padding: 0.6rem 1.2rem;
         background: transparent;
         border: 1px solid var(--border-color);
-        border-radius: 20px;
+        border-radius: 25px;
         color: var(--text-secondary);
         cursor: pointer;
         transition: all 0.3s ease;
-        font-weight: 500;
-        height: 100%;
-        display: flex;
-        align-items: center;
+        font-weight: 600;
+        font-size: 0.95rem;
+        white-space: nowrap;
       }
 
       .filter-tab.active {
@@ -585,18 +635,24 @@
 
       .search-container {
         position: relative;
-        width: 250px;
-        height: 100%;
+        width: 300px;
       }
 
       .search-container input {
         width: 100%;
-        height: 100%;
-        padding: 0.5rem 1rem 0.5rem 2.5rem;
+        padding: 0.6rem 1rem 0.6rem 2.5rem;
         border: 1px solid var(--border-color);
-        border-radius: 20px;
-        background: var(--background-medium);
+        border-radius: 25px;
+        background: var(--background-dark);
         color: var(--text-primary);
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+      }
+      
+      .search-container input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px rgba(0, 255, 136, 0.1);
       }
 
       .search-container i {
@@ -619,12 +675,12 @@
         background: var(--background-medium);
         border: 1px solid var(--border-color);
         border-radius: 16px;
-        padding: 1.8rem;
+        padding: 2rem;
         transition: all 0.3s ease;
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        height: 450px;
+        min-height: 420px;
       }
 
       .article-card:hover {
@@ -723,6 +779,7 @@
         overflow: hidden;
         display: -webkit-box;
         -webkit-line-clamp: 2;
+        line-clamp: 2;
         -webkit-box-orient: vertical;
       }
 
@@ -735,6 +792,7 @@
         overflow: hidden;
         display: -webkit-box;
         -webkit-line-clamp: 4;
+        line-clamp: 4;
         -webkit-box-orient: vertical;
       }
 
@@ -792,13 +850,13 @@
         transform: translateY(-2px);
       }
 
-      /* Progress section styles - ADJUSTED SIZE */
+      /* Progress section styles - IMPROVED SPACING */
       .progress-section {
-        margin: 4rem 0;
+        margin: 3rem 0;
         background: var(--background-medium);
         border-radius: 16px;
-        padding: 2rem;
-        width: 100%;
+        padding: 2.5rem;
+        border: 1px solid var(--border-color);
       }
 
       .progress-section h3 {
@@ -815,17 +873,32 @@
 
       .progress-item {
         background: var(--background-dark);
-        border-radius: 8px;
-        padding: 1.2rem;
-        height: 80px;
+        border-radius: 10px;
+        padding: 1.5rem;
+        border: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+      }
+      
+      .progress-item:hover {
+        border-color: var(--primary-color);
+        box-shadow: 0 4px 15px rgba(0, 255, 136, 0.1);
       }
 
       .progress-header {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 0.8rem;
-        font-weight: 500;
-        height: 24px;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+      
+      .progress-header span:first-child {
+        color: var(--text-primary);
+      }
+      
+      .progress-header span:last-child {
+        color: var(--primary-color);
+        font-weight: 700;
       }
 
       .progress-bar {
@@ -843,22 +916,17 @@
         transition: width 1.5s ease-in-out;
       }
 
-      /* Newsletter section styles - ADJUSTED SIZE */
       .newsletter-section {
-        margin: 4rem 0;
+        margin: 3rem 0;
         background: linear-gradient(
           135deg,
           var(--background-medium) 0%,
           var(--background-dark) 100%
         );
         border-radius: 16px;
-        padding: 3rem;
+        padding: 3.5rem 2rem;
         text-align: center;
-        width: 100%;
-        height: 280px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        border: 1px solid var(--border-color);
       }
 
       .newsletter-content h3 {
@@ -877,37 +945,45 @@
 
       .newsletter-form {
         display: flex;
-        max-width: 500px;
-        margin: 0 auto 1rem;
+        max-width: 550px;
+        margin: 0 auto 1.5rem;
         gap: 1rem;
-        height: 50px;
       }
 
       .newsletter-form input {
         flex-grow: 1;
-        padding: 0.75rem 1rem;
-        border: 1px solid var(--border-color);
-        border-radius: 8px;
-        background: var(--background-medium);
+        padding: 1rem 1.5rem;
+        border: 2px solid var(--border-color);
+        border-radius: 10px;
+        background: var(--background-dark);
         color: var(--text-primary);
-        height: 100%;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+      
+      .newsletter-form input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
       }
 
       .newsletter-form button {
-        padding: 0.75rem 1.5rem;
+        padding: 1rem 2rem;
         background: var(--primary-color);
         color: var(--background-dark);
         border: none;
-        border-radius: 8px;
-        font-weight: 600;
+        border-radius: 10px;
+        font-weight: 700;
         cursor: pointer;
         transition: all 0.3s ease;
-        height: 100%;
-        width: 150px;
+        white-space: nowrap;
+        font-size: 1rem;
       }
-
+      
       .newsletter-form button:hover {
         background: #00e07a;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 255, 136, 0.3);
       }
 
       .newsletter-disclaimer {

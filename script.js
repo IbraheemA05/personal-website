@@ -12,15 +12,23 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 });
 
-// Mobile menu toggle functionality
+// Page Loader
+window.addEventListener('load', () => {
+  document.body.classList.add('loaded');
+});
+
+// Mobile menu toggle functionality with enhanced accessibility
 document.addEventListener("DOMContentLoaded", function () {
   const mobileMenuToggle = document.getElementById("mobileMenuToggle");
   const nav = document.getElementById("nav");
 
   if (mobileMenuToggle && nav) {
     mobileMenuToggle.addEventListener("click", function () {
-      mobileMenuToggle.classList.toggle("active");
+      const isExpanded = mobileMenuToggle.classList.toggle("active");
       nav.classList.toggle("active");
+
+      // Update ARIA attribute for accessibility
+      mobileMenuToggle.setAttribute("aria-expanded", isExpanded);
     });
 
     // Close mobile menu when clicking on a nav link
@@ -28,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
       link.addEventListener("click", function () {
         mobileMenuToggle.classList.remove("active");
         nav.classList.remove("active");
+        mobileMenuToggle.setAttribute("aria-expanded", "false");
       });
     });
 
@@ -36,28 +45,74 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!mobileMenuToggle.contains(e.target) && !nav.contains(e.target)) {
         mobileMenuToggle.classList.remove("active");
         nav.classList.remove("active");
+        mobileMenuToggle.setAttribute("aria-expanded", "false");
       }
     });
   }
 });
 
-// Header scroll effect with enhanced animations
-window.addEventListener("scroll", () => {
+// Throttle utility for performance optimization
+function throttle(func, delay) {
+  let timeoutId;
+  let lastExecTime = 0;
+  return function (...args) {
+    const currentTime = Date.now();
+    const timeSinceLastExec = currentTime - lastExecTime;
+
+    clearTimeout(timeoutId);
+
+    if (timeSinceLastExec > delay) {
+      func.apply(this, args);
+      lastExecTime = currentTime;
+    } else {
+      timeoutId = setTimeout(() => {
+        func.apply(this, args);
+        lastExecTime = Date.now();
+      }, delay - timeSinceLastExec);
+    }
+  };
+}
+
+// Header scroll effect with enhanced animations and throttling
+window.addEventListener("scroll", throttle(() => {
   const header = document.querySelector(".header");
   const scrollY = window.scrollY;
+  const backToTop = document.getElementById("backToTop");
 
+  // Header styling on scroll
   if (scrollY > 100) {
     header.style.background =
       "linear-gradient(135deg, rgba(10, 10, 10, 0.98) 0%, rgba(26, 26, 26, 0.99) 100%)";
     header.style.boxShadow = "0 8px 40px rgba(0, 255, 136, 0.15)";
     header.style.borderColor = "rgba(0, 255, 136, 0.3)";
-    header.style.transform = `translateY(${scrollY * 0.1}px)`;
   } else {
     header.style.background =
       "linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(26, 26, 26, 0.98) 100%)";
     header.style.boxShadow = "0 4px 30px rgba(0, 0, 0, 0.3)";
     header.style.borderColor = "rgba(0, 255, 136, 0.2)";
-    header.style.transform = "translateY(0)";
+  }
+
+  // Back to top button visibility
+  if (backToTop) {
+    if (scrollY > 300) {
+      backToTop.classList.add("visible");
+    } else {
+      backToTop.classList.remove("visible");
+    }
+  }
+}, 100)); // Throttle to run at most every 100ms
+
+// Back to top button functionality
+document.addEventListener("DOMContentLoaded", () => {
+  const backToTop = document.getElementById("backToTop");
+
+  if (backToTop) {
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
   }
 });
 
@@ -194,9 +249,11 @@ function animateStats() {
   const statNumbers = document.querySelectorAll(".stat-number");
 
   statNumbers.forEach((stat) => {
-    const target = parseInt(stat.textContent);
+    const target = parseInt(stat.getAttribute('data-target') || stat.textContent);
     let current = 0;
     const increment = target / 50;
+    const duration = 2000; // 2 seconds
+    const stepTime = duration / 50;
 
     const timer = setInterval(() => {
       current += increment;
@@ -205,7 +262,7 @@ function animateStats() {
         clearInterval(timer);
       }
       stat.textContent = Math.floor(current);
-    }, 50);
+    }, stepTime);
   });
 }
 
